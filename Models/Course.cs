@@ -16,5 +16,6 @@ namespace CourseCenter.Models
         public string CourseModule { set; get; } //模块组成 #modelID#modeleID#
         public DateTime BeginTime { set; get; } //课程开始时间
         public DateTime EndTime { set; get; } //课程关闭时间
+          public DateTime EndTimes { set; get; } //课程关闭时间
     }
 }
