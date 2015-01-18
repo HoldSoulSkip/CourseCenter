@@ -57,7 +57,7 @@ namespace CourseCenter.Controllers
         /// <returns></returns>
         public ActionResult StudentCoursesDetail()
         {
-            int courseId = Convert.ToInt32(Request.QueryString["id"]);
+            int courseId=Convert.ToInt32(Request.QueryString["id"]);
             //课程内容
             Course course = db.Course.Where(c => c.Id == courseId).FirstOrDefault();
             ViewBag.course = course;
@@ -253,7 +253,7 @@ namespace CourseCenter.Controllers
 
 
             return View();
-        }
+        } 
         #endregion
 
         #region 学生进入某个课程后 显示的具体内容+ModuleView
@@ -266,68 +266,80 @@ namespace CourseCenter.Controllers
         /// <returns></returns>
         public ActionResult ModuleView()
         {
+            
+            //if()
             string CId = Request.QueryString["CId"]; ///属于哪一门课程
-            if (CId != null && CId != "")
-            {
-                ViewBag.CId = CId; //保存
-
-            }
             int CourseId = Convert.ToInt32(CId);
-
-
-
-            string id = Request.QueryString["id"]; ///查看的是模块的id
-            if (id != null)
+            if (db.Stu_Course.Where(c => c.StudentId == new Guid(studentId) && c.CourseId == CourseId).FirstOrDefault() != null)
             {
-                int ModuleId = Convert.ToInt32(id);//获得模块的id
-                Module module = db.Module.Where(m => m.Id == ModuleId).FirstOrDefault();
-                ViewBag.Pagemodule = module;
-
-            }
-            string moduleTag = Request.QueryString["flag"];
-            int tag = Convert.ToInt32(moduleTag);
-
-            StudentWork work = db.StudentWork.Where(w => w.CourseId == CourseId && w.ModuleTag == tag).FirstOrDefault();
-            //查询选择题目---------todo   单选多选要分开，因为checkbox和radio不同
-            List<PaperQuestion> selectQuestions = db.PaperQuestion.Where(t => t.CourseId == CourseId && t.ModuleTag == tag && t.QuestionType != 2).ToList();
-            //查询填空题目
-            List<PaperQuestion> blankQuestions = db.PaperQuestion.Where(t => t.CourseId == CourseId && t.ModuleTag == tag && t.QuestionType == 2).ToList();
-            if (selectQuestions.Count() != 0)
-            {
-                ViewBag.selectQuestions = selectQuestions;
-            }
-            if (blankQuestions.Count() != 0)
-            {
-                ViewBag.blankQuestions = blankQuestions;
-            }
-            if (work != null)
-            {
-                ViewBag.PageWork = work;
-            }
-            if (moduleTag.Equals("1"))
-            {
-                return View("ModuleView1");
-            }
-            else
-                if (moduleTag.Equals("2"))
+                if (CId != null && CId != "")
                 {
-                    return View("ModuleView2");
+                    ViewBag.CId = CId; //保存
+
+                }
+                
+
+
+
+                string id = Request.QueryString["id"]; ///查看的是模块的id
+                if (id != null)
+                {
+                    int ModuleId = Convert.ToInt32(id);//获得模块的id
+                    Module module = db.Module.Where(m => m.Id == ModuleId).FirstOrDefault();
+                    ViewBag.Pagemodule = module;
+
+                }
+                string moduleTag = Request.QueryString["flag"];
+                int tag = Convert.ToInt32(moduleTag);
+
+                StudentWork work = db.StudentWork.Where(w => w.CourseId == CourseId && w.ModuleTag == tag).FirstOrDefault();
+                //查询选择题目---------todo   单选多选要分开，因为checkbox和radio不同
+                List<PaperQuestion> selectQuestions = db.PaperQuestion.Where(t => t.CourseId == CourseId && t.ModuleTag == tag && t.QuestionType != 2).ToList();
+                //查询填空题目
+                List<PaperQuestion> blankQuestions = db.PaperQuestion.Where(t => t.CourseId == CourseId && t.ModuleTag == tag && t.QuestionType == 2).ToList();
+                if (selectQuestions.Count() != 0)
+                {
+                    ViewBag.selectQuestions = selectQuestions;
+                }
+                if (blankQuestions.Count() != 0)
+                {
+                    ViewBag.blankQuestions = blankQuestions;
+                }
+                if (work != null)
+                {
+                    ViewBag.PageWork = work;
+                }
+                if (moduleTag.Equals("1"))
+                {
+                    return View("ModuleView1");
                 }
                 else
-                    if (moduleTag.Equals("3"))
+                    if (moduleTag.Equals("2"))
                     {
-                        return View("ModuleView3");
+                        return View("ModuleView2");
                     }
                     else
-                        if (moduleTag.Equals("4"))
+                        if (moduleTag.Equals("3"))
                         {
-                            return View("ModuleView4");
+                            return View("ModuleView3");
                         }
                         else
-                        {
-                            return View("ModuleView5");
-                        }
-        }
+                            if (moduleTag.Equals("4"))
+                            {
+                                return View("ModuleView4");
+                            }
+                            else
+                            {
+                                return View("ModuleView5");
+                            }
+            }
+            else
+            {
+                ViewBag.Info = "请先选择课程";
+                return RedirectToAction("CoursesAllExcSelected");
+
+            }
+        } 
         #endregion
 
 
@@ -368,7 +380,7 @@ namespace CourseCenter.Controllers
             }
             //todo   完成图片的保存
             db.SaveChanges();
-        }
+        } 
         #endregion
 
 
@@ -416,7 +428,7 @@ namespace CourseCenter.Controllers
             db.SaveChanges();
 
             return RedirectToAction("StudentEnterCourse", new { id = CourseId });
-        }
+        } 
         #endregion
 
 
