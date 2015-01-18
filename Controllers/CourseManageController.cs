@@ -26,6 +26,7 @@ namespace CourseCenter.Controllers
         }
         #endregion
         // 发布课程 --内容  D大调
+        //判断是否全部填写完板块
         public ActionResult CoursesPublish()
         {
             try
