@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Register Page";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <title> Register Page</title>
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/assets/styles.css" rel="stylesheet" media="screen">
+     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="~/Content/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  </head>
+  <body id="login">
+      <div class="container">
+ <div class="row-fluid">
+
+            <!-- block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">注册信息</div>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form class="form-horizontal" method="post">
+                            <fieldset>
+                                <legend>个人信息</legend>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">用户帐号</label>
+                                    <div class="controls">
+                                        <input name="Account" class="input-xlarge focused"  id="focusedInput" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">用户权限 </label>
+                                    <div class="controls">
+                                        <input name ="Authority" class="input-xlarge disabled" id="disabledInput" type="text" placeholder="" disabled="">
+                                    </div>
+                                </div>
+                      
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">姓名</label>
+                                    <div class="controls">
+                                        <input name="UserName" class="input-xlarge focused" id="focusedInput" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">输入新密码</label>
+                                    <div class="controls">
+                                        <input name="Pwd" class="input-xlarge focused" id="newPwd1" type="text" value="不修改就不需要输入" onfocus="ClearUp()">
+                                    </div>
+
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">再次输入新密码</label>
+                                    <div class="controls">
+                                        <input name="Pwd" class="input-xlarge focused" id="newPwd2"  type="text" value="不修改就不需要输入" onblur="CheckPwd()">
+                                    </div>
+                                </div>
+                                <div class="control-group success">
+                                    <label class="control-label" for="selectError">性别 </label>
+                                    <div class="controls">
+                                       <select name ="Sex" id="selectSuccess">
+                                              <option value ="1" selected="selected">男</option>
+                                              <option value ="0">女</option>
+                                              
+                                            
+   
+                                        </select>
+                                     
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-actions">
+                                    <button type="submit"  id="subButton" class="btn btn-primary">Save changes</button>
+                                    <button type="reset" class="btn">Cancel</button>
+                                </div>
+                               
+                                  
+                               <div class="alert alert-success">
+										<button class="close" data-dismiss="alert">&times;</button>
+										<strong>修改结果</strong> 
+									</div>
+                             
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /block -->
+        </div>
+          </div> <!-- /Container -->
+    <script src="~/Content/vendors/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+    </html>

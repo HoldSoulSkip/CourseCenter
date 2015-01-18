@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "GetStudentWork";
+    Layout = "~/Views/Shared/CouserAndStudent.cshtml";
+}
+
+@section span9{
+   <div class="span9" id="content">
+             
+                <div class="row-fluid">
+                    <!-- block -->
+                    <div class="block">
+                        <div class="navbar navbar-inner block-header">
+                            <div class="muted pull-left">课程管理新建</div>
+                        </div>
+
+                        <hr>
+                        <div class="block-content collapse in">
+                            <div style="width: 800px; margin: auto">
+                                <div class="well" style="margin-top: 30px;">
+                                    <ul class="Work_ul">
+                                     
+                                          @{
+                                              
+                                         foreach (var item in ViewBag.listStudentWork as List<CourseCenter.Models.StudentWork>)
+                                              { 
+                                             <li>
+                                                       <dl>
+                                              <dt>模块名称：模块 @item.ModuleTag </dt>
+                                               <dt>上传内容：
+                                                                                  @{
+                                                  if (@item.WorkFilePath != null)
+                                                  {
+                                                      <a class="btn btn-info " href="@item.WorkFilePath">完成下载</a>
+                                                 
+                                                  
+                                                  }
+                                                  else
+                                                  {
+                                                    <label class="control-label" for="fileInput">暂无资料</label>
+                                                  }
+                                                  }
+
+                                               </dt>
+                                              <dt>作文内容：@Html.Raw(item.WorkContent)</dt>
+                                              <hr style="background-color:#08c; height:1px;" />
+                                              <dt>
+                                                <form class="form-horizontal"  method="post" action="SetScore" >
+                                      
+                                        <h7>教师打分:</h7>
+                                          <div class="control-group">
+                                          <label class="control-label" for="date01">填写分数</label>
+                                          <div class="controls">
+                                              <input  type ="hidden" value=" @item.StudentId " name="StudentId"/>
+                                                <input  type ="hidden" value="@item.CourseId" name="CourseId"/>
+                                                <input  type ="hidden" value="@item.ModuleTag"  name="ModuleTag"/>
+                                        <text><input type="text" name="score" id="@item.ModuleTag"  class="span6 " /> </text>       
+                                              
+                                               <p class="help-block">请务填写分数</p>            
+                                           
+                                          </div>
+                                        </div>
+                                          <div class="form-actions">
+                                          <button type="button" onclick="ConfirmSocre('@item.StudentId',@item.CourseId,@item.ModuleTag)" class="btn btn-primary">提交分数</button>
+                                          <button type="reset" class="btn">取消</button>
+
+                                        </div>
+                                          
+
+                                                    </form>
+                                              </dt>
+                                          </dl>
+                                                 </li>
+                                             }
+                                           
+                                      }
+                                          
+
+                                   
+                                         
+                                       
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /block -->
+                </div>
+
+            </div>
+                                          }
+
+@section booterScript{
+    
+<script src="~/Content/vendors/jquery-1.9.1.js"></script> 
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script> 
+<script src="~/Content/vendors/datatables/js/jquery.dataTables.min.js"></script> 
+<script src="~/Content/bootstrap/js/jquery.bootstrap.js"></script> 
+<script src="~/Content/assets/scripts.js"></script> 
+<script src="~/Content/assets/DT_bootstrap.js"></script> 
+<script>
+    $(function () {
+        
+       
+
+
+    });
+    ///提交成绩
+    function ConfirmSocre(Sid,Cid,MT) {
+        var score = $("#" + MT).val();
+       
+        $.ajax({
+            type: "POST",
+            url: "/LearnerManage/SetScore",
+            data: "StudentId=" + Sid + "&CourseId=" + Cid + "&score=" + score + "&ModuleTag=" + MT,
+            success: function (data) {
+                if (data == "OK") {
+                    $("#" + MT).val(score);
+                    alert("模块" + MT+"提交成功");
+
+                    
+
+                } else {
+                    $("#" + MT).val("赋值不正确");
+                   
+                }
+
+            }
+
+        })
+
+    }
+    function show() {
+        $('#myModal').css("z-index", 1045);
+        $('#myModal').modal('show');
+
+    }
+    function Edit() {
+        $('#myModal2').css("z-index", 1045);
+        $('#myModal2').modal('show');
+
+    }
+
+    /** 提交按钮****/
+    function submit() {
+       
+        $.messager.alert("Success", "恭喜您，添加信息成功");
+        $('#myModal').modal('hide');
+    }
+    function submitEdit() {
+
+        $.messager.alert("Success", "恭喜您，修改信息成功");
+        $('#myModal2').modal('hide');
+    }
+
+        </script> 
+    }

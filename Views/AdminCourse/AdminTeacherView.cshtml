@@ -1,0 +1,251 @@
+﻿@{
+    ViewBag.Title = "AdminTeacherView";
+    Layout = "~/Views/Shared/admin_Layout.cshtml";
+}
+@section head{
+  
+    
+        <!-- Bootstrap -->
+        <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="~/Content/assets/styles.css" rel="stylesheet" media="screen">
+        <link href="~/Content/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
+        <link href="~/Content/bootstrap/css/teacherCourse.css" rel="stylesheet" media="screen">
+              <!-- 乱码的原因是没有设置参数-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="~/Content/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+      }
+@section  span9{
+    <div class="span9" id="content">
+                  <div class="row-fluid">
+                     <!-- block -->
+                     <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">课程列表</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                   <div class="table-toolbar">
+                                      <div class="btn-group">
+                                     <a href="#">
+                  <button class="btn btn-success" data-toggle="modal"  onClick="show()"
+   >Add New <i class="icon-plus icon-white"></i></button>
+                  </a> 
+                                      </div>
+
+                                   
+                                    @*  <div class="btn-group pull-right">
+                                         <button data-toggle="dropdown" class="btn dropdown-toggle">其他课程 <span class="caret"></span></button>
+                                         <ul class="dropdown-menu">
+                                            <li><a href="#">课程一</a></li>
+                                            <li><a href="#">课程二</a></li>
+                                            <li><a href="#">课程三</a></li>
+                                         </ul>
+                                      </div>*@
+                                   </div>
+                                    
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
+                                        <thead>
+                                            <tr>
+                                                <th>教师编号</th>
+                                                <th>教师名称</th>
+                                                <th>教师性别</th>
+                                              
+                                              @* <th>编辑教师信息</th>*@
+                                                <th>删除教师信息</th>
+                                                <th>进入课程</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                            @foreach (var item in (@ViewBag.TeacherInfo as List<CourseCenter.Models.TeacherInfo>))
+                                            {
+                                                <tr class="odd gradeX">
+                                                <td> @item.Account </td>
+                                                <td>@item.UserName</td>
+                                                <td>
+                                                    @{
+                                                       if(@item.Sex=="1"){
+                                                             <text>
+                                                   男
+                                                    </text>
+                                                           
+                                                       }else{
+                                                              <text>
+                                                 女
+                                                    </text>
+                                                       }
+                                                    }
+                                                    
+
+                                                </td>
+                                            @*  <td style="text-align: center" ><a class="btn btn-primary" onclick="Edit()"><i class="icon-refresh icon-white"></i> Edit</a></td>*@
+                                               <td style="text-align: center" ><a class="btn btn-danger" href="/AdminCourse/AdminTeacherDelete?id=@item.Id"><i class="icon-remove icon-white"></i> Delete</a></td>
+                                               <td style="text-align: center" ><a class="btn btn-success" href="/AdminCourse/AdminTeacherCoursesView?id=@item.Id"><i class="icon-heart icon-white"></i> Enter</a></td>
+
+
+                                            </tr>
+                                            }
+                                            
+                                            
+                                        
+                                         
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    </div>
+                        <!-- /block -->
+                  </div>
+              </div>
+    }
+
+
+     @section booterScript{
+            <script src="~/Content/vendors/jquery-1.9.1.js"></script>
+        <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/Content/vendors/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="~/Content/CenterUI/AdmingUI.js"></script>
+          <script src="~/Content/assets/DT_bootstrap.js"></script>
+       <script>
+           $(function () {
+
+           });
+           function show() {
+               $('#myModal').css("z-index", 1045);
+               $('#myModal').modal('show');
+
+           }
+          
+
+
+       
+           function submitEdit() {
+               $("#TeacherADD").submit();
+            
+        }
+
+        </script> 
+     
+     }
+@section ModalShow{
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true"> &times; </button>
+        <h4 class="modal-title" id="myModalLabel"> 增加教师 </h4>
+      </div>
+      <div class="modal-body">
+        <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form action="/AdminEidt/AddTeacher"  class="form-horizontal" method="post" id="TeacherADD">
+                            <fieldset>
+                               
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">用户帐号</label>
+                                    <div class="controls">
+                                        <input name="Account" class="input-xlarge focused"  id="focusedInput" type="text" value="">
+                                    </div>
+                                </div>
+                                
+                      
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">教师姓名</label>
+                                    <div class="controls">
+                                        <input name="UserName" class="input-xlarge focused" id="focusedInput" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">输入新密码</label>
+                                    <div class="controls">
+                                        <input name="Pwd" class="input-xlarge focused" id="newPwd1" type="text" value="" onfocus="ClearUp()">
+                                    </div>
+
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">再次输入新密码</label>
+                                    <div class="controls">
+                                        <input name="Pwd2" class="input-xlarge focused" id="newPwd2"  type="text" value="" onblur="CheckPwd()">
+                                    </div>
+                                </div>
+                                <div class="control-group success">
+                                    <label class="control-label" for="selectError">性别 </label>
+                                    <div class="controls">
+                                        
+                                            <select name ="Sex" id="selectSuccess">
+                                              <option value ="1" selected="selected">男</option>
+                                              <option value ="0">女</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                
+                                @{
+                                    if (TempData["res"] != null)
+                                    { <text> <div class="alert alert-success">
+										<button class="close" data-dismiss="alert">&times;</button>
+										<strong>修改结果</strong>  @Html.Raw(TempData["res"])
+									</div></text> }
+                                        }
+                             
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" 
+               data-dismiss="modal">关闭 </button>
+        <button type="button" class="btn btn-primary" id="subButton"  onClick="submitEdit()"> 提交更改 </button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <script type="text/javascript">
+        ///清空输入的密码
+        function ClearUp() {
+            $("#newPwd1").val("");
+            $("#newPwd2").val("");
+
+
+        }
+        //检验两次输入是否一样
+        function CheckPwd() {
+
+            var pwd = $("#newPwd1").val();
+
+            var pwd2 = $("#newPwd2").val();
+            if (pwd != pwd2) {
+                alert("两次输入的密码不一样");
+                $("#subButton").attr("disabled", true);
+
+            } else {
+                $("#subButton").attr("disabled", false);
+            }
+
+        }
+    </script>
+    }
+
+
+
+

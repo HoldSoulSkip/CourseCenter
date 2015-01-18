@@ -1,0 +1,230 @@
+﻿@{
+    ViewBag.Title = "CoursesDetail";
+    Layout = "~/Views/Shared/CouserAndStudent.cshtml";
+    
+}
+
+@section span9{
+    <div class="span9" id="content">
+                <!-- morris stacked chart -->
+                <!-- wizard -->
+                <!-- /wizard -->
+
+                <!-- validation -->
+                <!-- /validation -->
+                <div class="row-fluid">
+                    <!-- block -->
+                    <div class="block">
+                        <div class="navbar navbar-inner block-header">
+                            <div class="muted pull-left">课程模块管理</div>
+                        </div>
+
+                        <hr>
+                        <div class="block-content collapse in">
+                            <div style="width: 800px; margin: auto">
+                                <div class="well" style="margin-top: 30px;">
+                                    <ul class="tc_ul">
+
+                                        <p>新建课程模块，请按顺序添加，只有添加了前面的模块，才能添加后面的模块</p>
+                                         
+                                        <li>
+                                            
+                                            @{
+                                                if (@ViewBag.lm1 != null)
+                                                {
+                                                 <text> <a href="/ModuleManage/ModuleView?id=@ViewBag.lm1.Id&&flag=1&CId=@ViewBag.courseId"></text> 
+                                                }
+                                                else
+                                                {
+                                            <text> <a href="/ModuleManage/ModuleView?flag=1&CId=@ViewBag.courseId"></text>
+                                                }
+                                        }
+
+                                            <button class="btn btn-success  btn-warning btn-large tc_Sectionbutton">
+                                                模块一：导入课程 （
+                                               @{
+                                                   if (ViewBag.lm1 != null)
+                                                   {
+                                                       <text>已完成</text>
+                                                   }
+                                                   else
+                                                   { <text>未完成</text>}
+
+                                               }）
+
+                                            </button>
+
+                                        </a>
+
+                                        </li>
+                                        <li>@{
+                                            if (@ViewBag.lm2 != null)
+                                            { <text> <a href="/ModuleManage/ModuleView?id=@ViewBag.lm2.Id&&flag=2&CId=@ViewBag.courseId"></text> }
+                                            else
+                                            {
+                                                if (ViewBag.lm1 != null)
+                                                {
+                                            <text> <a href="/ModuleManage/ModuleView?flag=2&CId=@ViewBag.courseId"></text>}
+                                            }
+                                        }
+                                            <button class="btn btn-info  btn-large tc_Sectionbutton">
+                                                模块二：问题分析（
+                                               @{if (ViewBag.lm2 != null)
+                                                 {
+                                                      <text>已完成</text>
+                                                 }
+                                                 else
+                                                 { <text>未完成</text>}
+
+                                               }）</button>
+                                        </a>
+                                            <h1>显示模块的完成状态</h1>
+                                        </li>
+                                        <li>@{
+                                            if (@ViewBag.lm3 != null)
+                                            { <text> <a href="/ModuleManage/ModuleView?id=@ViewBag.lm3.Id&&flag=3&CId=@ViewBag.courseId"></text> }
+                                            else
+                                            {
+                                                if (@ViewBag.lm2 != null)
+                                                {
+                                                
+                                            <text> <a href="/ModuleManage/ModuleView?flag=3&CId=@ViewBag.courseId"></text>
+                                                }
+                                            }
+                                        }
+                                            <button class="btn btn-primary btn-large tc_Sectionbutton">
+                                                模块三：资源组织分析（
+                                                 @{if (ViewBag.lm3 != null)
+                                                   {
+
+                                                    
+                                                         <text>已完成</text>
+                                                  
+                                                   }
+                                                   else
+                                                   { <text>未完成</text>}
+
+                                                 }）</button></a></li>
+                                        <li>
+                                            @{
+                                                if (@ViewBag.lm4 != null)
+                                                { <text> <a href="/ModuleManage/ModuleView?id=@ViewBag.lm4.Id&&flag=4&CId=@ViewBag.courseId"></text> }
+                                                else
+                                                {
+                                                    if (@ViewBag.lm3 != null)
+                                                    {
+                                            <text> <a href="/ModuleManage/ModuleView?flag=4&CId=@ViewBag.courseId"></text>
+                                                    }
+                                                }
+                                        }
+                                                <button class="btn  btn-warning  btn-large tc_Sectionbutton">
+                                                    模型四：解决方案分析（
+                                                  @{if (ViewBag.lm4 != null)
+                                                    {
+
+                                                    
+                                                         <text>已完成</text>
+                                                  
+
+                                                    }
+                                                    else
+                                                    { <text>未完成</text>}
+
+                                                  }）</button></a></li>
+                                        <li>@{
+                                            if (@ViewBag.lm5 != null)
+                                            { <text> <a href="/ModuleManage/ModuleView?id=@ViewBag.lm5.Id&&flag=5&CId=@ViewBag.courseId"></text> }
+                                            else
+                                            {
+                                                if (@ViewBag.lm4 != null)
+                                                {
+                                            <text> <a href="/ModuleManage/ModuleView?flag=5&CId=@ViewBag.courseId"></text>
+                                                }
+                                            }
+                                        }
+                                            <button class="btn btn-danger  btn-large tc_Sectionbutton">
+                                                模型五：总结评价分析（
+                                                  @{if (ViewBag.lm5 != null)
+                                                    {
+
+                                                         <text>已完成</text>
+                                                  
+
+                                                    }
+                                                    else
+                                                    { <text>未完成</text>}
+
+                                                  }）</button></a></li>
+                                        <li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /block -->
+                </div>
+
+            </div>}
+    @section booterScript{
+    <!--/.fluid-container-->
+    <link href="~/Content/vendors/datepicker.css" rel="stylesheet" media="screen">
+    <link href="~/Content/vendors/uniform.default.css" rel="stylesheet" media="screen">
+    <link href="~/Content/vendors/chosen.min.css" rel="stylesheet" media="screen">
+
+    <link href="~/Content/vendors/wysiwyg/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
+
+    <script src="~/Content/vendors/jquery-1.9.1.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/vendors/jquery.uniform.min.js"></script>
+    <script src="~/Content/vendors/chosen.jquery.min.js"></script>
+    <script src="~/Content/vendors/bootstrap-datepicker.js"></script>
+
+    <script src="~/Content/vendors/wysiwyg/wysihtml5-0.3.0.js"></script>
+    <script src="~/Content/vendors/wysiwyg/bootstrap-wysihtml5.js"></script>
+
+    <script src="~/Content/vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
+
+    <script type="text/javascript" src="~/Content/vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/form-validation.js"></script>
+
+    <script src="~/Content/assets/scripts.js"></script>
+    <script>
+
+        jQuery(document).ready(function () {
+            FormValidation.init();
+        });
+
+
+        $(function () {
+            $(".datepicker").datepicker();
+            $(".uniform_on").uniform();
+            $(".chzn-select").chosen();
+            $('.textarea').wysihtml5();
+
+            $('#rootwizard').bootstrapWizard({
+                onTabShow: function (tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    var $current = index + 1;
+                    var $percent = ($current / $total) * 100;
+                    $('#rootwizard').find('.bar').css({ width: $percent + '%' });
+                    // If it's the last tab then hide the last button and show the finish instead
+                    if ($current >= $total) {
+                        $('#rootwizard').find('.pager .next').hide();
+                        $('#rootwizard').find('.pager .finish').show();
+                        $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                    } else {
+                        $('#rootwizard').find('.pager .next').show();
+                        $('#rootwizard').find('.pager .finish').hide();
+                    }
+                }
+            });
+            $('#rootwizard .finish').click(function () {
+                alert('Finished!, Starting over!');
+                $('#rootwizard').find("a[href*='tab1']").trigger('click');
+            });
+        });
+    </script>
+        }
+

@@ -1,0 +1,425 @@
+﻿@{
+    ViewBag.Title = "StudentCoursesDetail";
+    Layout = "~/Views/Shared/student_Layout.cshtml";
+}
+
+
+@section head{
+
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
+    <link href="~/Content/assets/styles.css" rel="stylesheet" media="screen">
+    <!-- 乱码的原因是没有设置参数-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <script src="~/Content/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+}
+
+@section span9{
+    <div class="span9" id="content">
+        <!-- morris stacked chart -->
+
+        <div class="row-fluid">
+            <!-- block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">课程基本信息</div>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                            <fieldset>
+                                <legend>课程内容</legend>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">课程名称 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+                                            <div class="alert alert-info" style="width:520px; text-align:center">
+                                               牛顿第二定律
+                                             
+                                            </div>
+
+
+
+
+                                            </text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">课程教学团队 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+                                            <div class="alert alert-info"style="width:520px; text-align:center">
+                                                黄达明
+                                             
+                                            </div>
+                                            </text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">课程总课时数 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>  <div class="alert alert-info" style="width:520px; text-align:center">
+                                                六课时
+                                             
+                                            </div></text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="date01">课程预计开始时间</label>
+                                    <div class="controls">
+
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            {
+                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.Pagemodule.DeadlineTime">
+                                            </text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+                                        <div class="alert alert-info" style="width:520px; text-align:center">
+                                                02/16/14
+                                             
+                                            </div>
+                                  
+                                            </text>
+                                            }
+
+                                        }
+
+                                        <p class="help-block">请务必在指定时间内完成</p>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="date01">课程预计结束时间</label>
+                                    <div class="controls">
+
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            {
+                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.Pagemodule.DeadlineTime">
+                                            </text>
+                                            }
+                                            else
+                                            {
+                                            <text>    <div class="alert alert-info" style="width:520px; text-align:center">
+                                                02/16/14
+                                             
+                                            </div>
+                                            </text>
+                                            }
+
+                                        }
+
+                                        <p class="help-block">请务必在指定时间内完成</p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">课程所属学科 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>    <div class="alert alert-info" style="width:520px; text-align:center">
+                                              物理
+                                             
+                                            </div></text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">课程关键词 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+                                            <div class="alert alert-info" style="width:520px; text-align:center">
+                                                物理、牛顿第二定律
+                                             
+                                            </div>
+                            </text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <p>显示课程的各个模块的名称以及信息</p>
+                                <div class="control-group">
+                                    <label class="control-label" for="textarea2">课程教学大纲</label>
+                                    <div class="controls">
+                                        <div class="block-content collapse in">
+                                            <div class="span12">
+                                                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th>课程单元名称</th>
+                                                            <th>课程单元概述</th>
+                                                            <th>课程单元类型</th>
+                                                            <th>课程单元课时数</th>
+                                                            <th>单元状态</th>
+
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+
+                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=1&CId=2">导入课程</a></td>
+                                                            <td>教师活动</td>
+                                                            <td>情景单元</td>
+                                                            <td>1课时</td>
+                                                            <td>未完成</td>
+
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=2&CId=2">推进新课</a></td>
+                                                            <td>提问</td>
+                                                            <td>问题形成单元</td>
+                                                            <td>1课时</td>
+                                                            <td>未完成</td>
+
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=3&CId=2">推进新课</a></td>
+                                                            <td>探究</td>
+                                                            <td>解决计划单元</td>
+                                                            <td>1课时</td>
+                                                            <td>未完成</td>
+
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=4&CId=2">推进新课</a></td>
+                                                            <td>实验</td>
+                                                            <td>计划实施单元</td>
+                                                            <td>1课时</td>
+                                                            <td>未完成</td>
+
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=5&CId=2">课程小结</a></td>
+                                                            <td>小结</td>
+                                                            <td>总结和评价单元</td>
+                                                            <td>1课时</td>
+                                                            <td>未完成</td>
+
+
+                                                        </tr>
+
+
+
+
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">课程语言 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+                                        <div class="alert alert-info" style="width:520px; text-align:center">
+                                                中文
+                                             
+                                            </div>
+           </text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">适用学习者 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+
+                                                 <div class="alert alert-info" style="width:520px; text-align:center">
+                                              初中二年级学生
+                                             
+                                            </div>
+                                        
+                          </text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">适用教学类型 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+                                                  <div class="alert alert-info" style="width:520px; text-align:center">
+                                           诱导性、讨论型
+                                             
+                                            </div>
+                             </text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">适用教学年级 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>                 <div class="alert alert-info" style="width:520px; text-align:center">
+                                          初中二年级
+                                             
+                                            </div></text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">课程容量 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+                     <div class="alert alert-info" style="width:520px; text-align:center">
+                                           适中
+                                             
+                                            </div>
+                                        </text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /block -->
+
+        </div>
+
+        <!-- wizard -->
+        <!-- /wizard -->
+
+        <!-- validation -->
+        <!-- /validation -->
+
+
+    </div>
+}
+@section booterScript{
+    <script src="~/Content/vendors/jquery-1.9.1.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/CenterUI/StudentUI.js"></script>
+
+    <script>
+        $(function () {
+
+        });
+    </script>
+
+}

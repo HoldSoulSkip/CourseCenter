@@ -1,0 +1,184 @@
+﻿@model CourseCenter.Models.StudentInfo
+@{
+    ViewBag.Title = "StudentCenter";
+    Layout = "~/Views/Shared/student_Layout.cshtml";
+}
+@section head{
+  
+    
+        <!-- Bootstrap -->
+        <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="~/Content/assets/styles.css" rel="stylesheet" media="screen">
+        <link href="~/Content/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
+        <link href="~/Content/bootstrap/css/teacherCourse.css" rel="stylesheet" media="screen">
+
+              <!-- 乱码的原因是没有设置参数-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="~/Content/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+      }
+
+@section  span9{
+       <div class="span9" id="content">
+        <!-- morris stacked chart -->
+        <div class="row-fluid">
+            <!-- block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">个人中心</div>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form class="form-horizontal" method="post">
+                            <fieldset>
+                                <legend>个人信息</legend>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">用户帐号</label>
+                                    <div class="controls">
+                                        <input name="Account" class="input-xlarge focused"  id="focusedInput" type="text" value="@Model.Account">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">用户权限 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@Model.Authority=="0"){
+                                                <text>
+                                         
+                                        <input name ="Authority" class="input-xlarge disabled" id="disabledInput" type="text" value="学生"disabled="">
+                                        </text>
+                                            }
+                                            
+                                            }
+                                     
+
+                                        
+                                    </div>
+                                </div>
+                      
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">姓名</label>
+                                    <div class="controls">
+                                        <input name="UserName" class="input-xlarge focused" id="focusedInput" type="text" value="@Model.UserName">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">输入新密码</label>
+                                    <div class="controls">
+                                        <input name="Pwd" class="input-xlarge focused" id="newPwd1" type="text" value="不修改就不需要输入" onfocus="ClearUp()">
+                                    </div>
+
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">再次输入新密码</label>
+                                    <div class="controls">
+                                        <input name="Pwd" class="input-xlarge focused" id="newPwd2"  type="text" value="不修改就不需要输入" onblur="CheckPwd()">
+                                    </div>
+                                </div>
+                                <div class="control-group success">
+                                    <label class="control-label" for="selectError">性别 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@Model.Sex == "1")
+                                            {
+                                            <text> <select name ="Sex" id="selectSuccess">
+                                              <option value ="1" selected="selected">男</option>
+                                              <option value ="0">女</option></text>
+                                              
+                                            }
+                                            else
+                                            {
+                                              
+                                            <text> <select name ="Sex" id="selectSuccess">
+                                              <option value ="1" >男</option>
+                                              <option value ="0" selected="selected">女</option></text>
+                                            }
+                                              
+                                             
+                                        }
+                                        </select>
+                                     
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-actions">
+                                    <button type="submit"  id="subButton" class="btn btn-primary">Save changes</button>
+                                    <button type="reset" class="btn">Cancel</button>
+                                </div>
+                                @{
+                                    if(TempData["res"]!=null)
+                                    { <text> <div class="alert alert-success">
+										<button class="close" data-dismiss="alert">&times;</button>
+										<strong>修改结果</strong>  @Html.Raw( TempData["res"])
+									</div></text> }
+                                        }
+                             
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /block -->
+        </div>
+
+
+
+        <!-- wizard -->
+
+        <!-- /wizard -->
+
+        <!-- validation -->
+
+        <!-- /validation -->
+
+
+    </div>
+  
+    }
+  @section booterScript{
+           
+        <script src="~/Content/vendors/jquery-1.9.1.js"></script>
+        <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/Content/vendors/datatables/js/jquery.dataTables.min.js"></script>
+
+      <script src="~/Content/CenterUI/StudentUI.js"></script>
+        
+
+        <script src="~/Content/assets/DT_bootstrap.js"></script>
+        <script>
+            ///清空输入的密码
+            function ClearUp() {
+                $("#newPwd1").val("");
+                $("#newPwd2").val("");
+
+
+            }
+
+
+            //检验两次输入是否一样
+            function CheckPwd() {
+
+                var pwd = $("#newPwd1").val();
+
+                var pwd2 = $("#newPwd2").val();
+                if (pwd != pwd2) {
+                    alert("两次输入的密码不一样");
+                    $("#subButton").attr("disabled", true);
+
+                } else {
+                    $("#subButton").attr("disabled", false);
+                }
+
+            }
+        </script>
+             }
+
+

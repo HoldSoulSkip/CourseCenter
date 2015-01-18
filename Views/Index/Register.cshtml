@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/Index_Layout.cshtml";
+}
+@section span9{
+<div id='register' class="container-fluid" style="margin-top:41px;margin-bottom:40px">
+        <div class="row-fluid ">
+ 
+            <div class="span6 offset1">
+ <fieldset>
+                        <legend>学生注册</legend>
+                        <form class="form-horizontal" method="post" >
+
+                                   <div class="control-group">
+                                <label class="control-label" for="iptAccount">用户账号</label>
+                                <div class="controls">
+                                    <input id="iptRgstEmail" type="text"  name="Account" onblur="CheckNull($(this))"/>
+                                </div>
+                            </div>
+                          
+                            <div class="control-group">
+                                <label class="control-label" for="iptUserName">用户名</label>
+                                <div class="controls">
+                                    <input id="iptUserName" type="text" name="UserName" onblur="CheckNull($(this))" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="iptPassword">密码</label>
+                                <div class="controls">
+                                    <input id="iptPassword" type="password" name="Pwd" onblur="CheckNull($(this))"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="iptPwdAffirm">密码确认</label>
+                                <div class="controls">
+                                    <input id="iptPwdAffirm" type="password" onblur="CheckNullConfirm($(this))"  />
+                                </div>
+                            </div>
+                     
+                   
+                                 <div class="control-group">
+                                          <label class="control-label" for="select02">性别</label>
+                                          <div class="controls">
+                                            <select id="select02" class="chzn-select" name="Sex">
+                                              <option value="1">男</option>
+                                              <option value="0">女</option>
+                                           
+                                            </select>
+                                          </div>
+                                        </div>
+                            <!--
+                            <div class="control-group">
+                                
+                                <label class="control-label" for="iptVerification">验证码</label>
+                                <div class="controls">
+                                    <input id="iptVerification" type="text" style="width:100px"/>
+                                    <img src="###" style="width:80px;height:29px; margin-left:10px"/>
+                                  
+                                </div>
+                            <hr style="width:800px; color:#987cb9; font-size: 2px">
+                            </div>
+                                --->
+                            <div class="span2">
+
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary" style="width:100px">注册</button>
+                                <button class="btn" style="margin-left:20px;width:100px">重置</button>
+                            </div>
+                            
+                        </form>
+                        
+                    </fieldset>
+
+
+
+
+            </div>
+            <div class="span2"></div>
+        </div>
+        
+
+    </div>
+    }

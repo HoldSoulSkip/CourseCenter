@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="x-ua-compatible" content="ie=9" />
+        <!--需要引入的css文件-->
+ <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="~/Content/vendors/jquery-1.9.1.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap/css/indexUI.css"><!--首页基本的样式控制-->
+   <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/CenterUI/validate.js"></script>
+
+    <link href="~/Content/bootstrap/css/sexylightbox.css" rel="stylesheet" type="text/css" />
+  <link href="~/Content/vendors/wysiwyg/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
+   <!---分成了三个部分， head 的东西，然后是span9 ,然后是booterScript--->
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @RenderBody()
+     
+  
+                <!--header导航条-->
+<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar-inner" style="height:80px;">
+					<div class="container-fluid" style="padding-left:40px; margin-top:20px;">
+						 <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                         </a> 
+                        <!--<a href="#" class="brand">TDE Platform</a>-->
+                        <img src="~/Content/images/cui/logo.png" class="brand" style="margin-top:-20px;"/>
+                       
+                        
+                      
+                        <div class="nav-collapse collapse navbar-responsive-collapse">
+                            <ul class="nav">
+                                <li class="active">
+                                    <a href="/Index/ShowIndex">主页</a>
+                                </li>
+                                <li>
+                                    <a href="#">FAQs</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        课程
+                                        <strong class="caret"></strong>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">优秀课程</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">推荐课程</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">其他</a>
+                                        </li>
+                                        <li class="divider">
+                                        </li>
+                                        <li class="nav-header">
+                                            标签
+                                        </li>
+                                        <li>
+                                            <a href="#">链接1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">链接2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                </li>
+                                
+                                
+                                       
+                              
+                               
+                            </ul>
+                             <a href="/Index/Register" style="float:right">注册页面</a>
+                            <a href="/Home/index" style="float:right;display:block;margin-right:20px;" ><i class="icon-user"></i>登陆</a>
+                                       
+                                    
+                                 
+                           
+                           
+                             
+
+                           
+                        </div>
+					</div>
+				</div>
+			</div>
+	<!--banner轮播放入新闻-->
+	<!--现阶段这个部分需要的改动-->
+	<!--1.做三张图放进去-->
+	<!--2.调整轮播高度height到看着舒服的比例，现在感觉高度略小-->
+	<!--3.给轮播的每张图插入点击事件，定向到位置-->
+                <!--/span-->
+                @RenderSection("span9",false)
+          <div id="footer" class="container-fluid" style="background-color:#171717;margin:0">
+
+        <div class="row-fluid">
+
+            <div class="span6 offset2">
+                <div class="row-fluid" style="margin:20px">
+
+                    <div class="col-xs-2">
+
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="row-fluid">
+                            <div class="col-xs-3" style="float:left;margin-right:30px">
+                                <h5>关于我们</h5>
+                                <ul class="unstyled">
+                                    <li><a href="###">我们的优势</a></li>
+                                    <li><a href="###">资讯报道</a></li>
+                                    <li><a href="###">加入我们</a></li>
+                                    <li><a href="###">联系我们</a></li>
+                                </ul>
+
+                            </div>
+                            <div class="col-xs-3" style="float:left;margin-right:30px">
+                                <h5>产品&amp;服务</h5>
+                                <ul class="unstyled">
+                                    <li><a href="###">产品介绍</a></li>
+                                    <li><a href="###">校企合作</a></li>
+                                    <li><a href="###">商务合作</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-3" style="float:left;margin-right:30px">
+                                <h5>帮助中心</h5>
+                                <ul class="unstyled">
+                                    <li><a href="###">常见问题</a></li>
+                                    <li><a href="###">联系客服</a></li>
+                                    <li><a href="###">服务协议</a></li>
+                                    <li><a href="###">隐私政策</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="background-color:#0d0d0d;margin:0px" >
+        <div class="row-fluid">
+            <div class="span12 text-center"style="margin-top:10px;margin-bottom:5px">
+                <p style="line-height:10px;color:#C9C9C9">TDE Platform</p>
+                <p style="line-height:10px;color:#C9C9C9">天津师范大学</p>
+            </div>
+        </div>
+    </div>
+
+  @RenderSection("ScriptBoot",false)
+</body>
+</html>

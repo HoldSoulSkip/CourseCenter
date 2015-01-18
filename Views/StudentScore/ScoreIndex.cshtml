@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "ScoreIndex";
+    Layout = "~/Views/Shared/student_Layout.cshtml";
+}
+@section head{
+  
+        <!-- Bootstrap -->
+        <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+     <link href="~/Content/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
+       <link href="~/Content/bootstrap/css/teacherCourse.css" rel="stylesheet" />
+        <link href="~/Content/assets/styles.css" rel="stylesheet" media="screen">
+       
+        <!-- 乱码的原因是没有设置参数-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    
+        <script src="~/Content/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+      }
+
+@section span9{
+    <div class="span9" id="content">
+      <div class="row-fluid section"> 
+        <!-- block -->
+        <div class="block">
+          <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left">成绩列表</div>
+          </div>
+                <div class="muted pull-left">@ViewBag.courseName</div>
+          <div class="block-content collapse in">
+            <div class="span12">
+              <div class="table-toolbar">
+                
+                <div class="btn-group pull-right">
+                  <button data-toggle="dropdown" class="btn dropdown-toggle">其他课程 <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                      @foreach (var course in ViewBag.listCourse)
+                      {
+                           <text><li><a href="/StudentScore/ScoreIndex?id=@course.Id"> @course.CourseName </a></li></text>
+                         
+                      }
+                   
+                  </ul>
+                </div>
+              </div>
+              <table cellpadding="0" cellspacing="0" border="0" style="height:200px;" class="table table-striped table-bordered"   id="example2">
+               
+
+                                @foreach (var item in ViewBag.listCs as List<CourseCenter.Models.CouScore>)
+                                {
+                                    
+                                     <div class="span3">     
+                                    <input type="text" value="@item.ModuleScore" class="knob second" data-thickness=".3" data-inputColor="#333" data-fgColor="#30a1ec" data-bgColor="#d4ecfd" data-width="140">
+                                          
+                                         
+                                         
+                                         <h7 style="color:#51a351"> 模块 @item.ModuleTag </h7>
+                                </div>
+                                }
+                
+
+                           
+              </table>
+            </div>
+          </div>
+            <hr style="background-color:#08c;height:1px;" />
+            
+        </div>
+        <!-- /block --> 
+      </div>
+        
+    </div>
+
+}
+
+
+
+
+
+ @section booterScript{
+
+
+
+
+     <script src="~/Content/vendors/jquery-1.9.1.js"></script> 
+      <script src="~/Content/CenterUI/StudentUI.js"></script>
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script> 
+<script src="~/Content/vendors/datatables/js/jquery.dataTables.min.js"></script> 
+<script src="~/Content/bootstrap/js/jquery.bootstrap.js"></script> 
+<script src="~/Content/assets/scripts.js"></script> 
+<script src="~/Content/assets/DT_bootstrap.js"></script> 
+
+
+
+
+
+        <script src="~/Content/vendors/jquery.knob.js"></script>
+       
+
+       
+       
+        <script>
+         
+            // Build jQuery Knobs
+            $(".knob").knob();
+
+
+        </script>
+
+
+    }

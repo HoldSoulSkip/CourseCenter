@@ -1,0 +1,131 @@
+﻿@model CourseCenter.Models.SysScore
+@{
+    ViewBag.Title = "GetStudentScore";
+    Layout = "~/Views/Shared/CouserAndStudent.cshtml";
+}
+
+
+@section span9{
+    <div class="span9" id="content">
+        <!-- morris stacked chart -->
+        <div class="row-fluid">
+        </div>
+
+        <!-- morris graph chart -->
+        <div class="section">
+        </div>
+
+        <!-- morris bar & donut charts -->
+        <div class="section">
+            <!-- /block -->
+        </div>
+
+        <!-- jQuery knobs -->
+
+
+
+        <div class="row-fluid section">
+            <!-- block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">@ViewBag.courseName</div>
+                    <div class="pull-right">
+                        <span class="badge badge-warning">View Detail</span>
+
+                    </div>
+                </div>
+                <div class="block-content collapse in">
+
+                    @foreach (var item in ViewBag.listCs as List<CourseCenter.Models.CouScore>)
+                    {
+                                    
+                        <div class="span3">
+                            <input type="text" value="@item.ModuleScore" class="knob second" data-thickness=".3" data-inputColor="#333" data-fgColor="#30a1ec" data-bgColor="#d4ecfd" data-width="140">
+                            <h7 style="color: #51a351"> 模块 @item.ModuleTag </h7>
+                        </div>
+                    }
+                    <div class="span3">
+                        <input type="text" value="@ViewData["AllScore"]" class="knob second" data-thickness=".3" data-inputColor="#333" data-fgColor="#30a1ec" data-bgColor="#d4ecfd" data-width="140">
+                        <h7 style="color: #51a351"> 最终成绩 </h7>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <td>类目</td><td>得分</td>
+                        </tr>
+
+                        <tr>
+                            <td>博客数量</td><td>@Model.CreatBlogCount</td>
+                        </tr>
+                        <tr>
+                            <td>消息数量</td><td>@Model.CreatMsgCount</td>
+                        </tr>
+                        <tr>
+                            <td>小组数量</td><td>@Model.CreatGroupCount</td>
+                        </tr>
+                        <tr>
+                            <td>客观成绩</td><td>90</td>
+                        </tr>
+                    </table>
+
+                    
+
+
+
+                </div>
+            </div>
+            <!-- /block -->
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+}
+
+
+
+
+@section booterScript{
+    <link rel="stylesheet" href="~/Content/vendors/morris/morris.css">
+
+
+    <script src="~/Content/vendors/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/vendors/jquery.knob.js"></script>
+    <script src="~/Content/vendors/raphael-min.js"></script>
+    <script src="~/Content/vendors/morris/morris.min.js"></script>
+
+
+    <script src="~/Content/assets/scripts.js"></script>
+    <script>
+        $(function () {
+
+            function doPlot(position) {
+                $.plot("#timechart", [
+                    { data: oilprices, label: "Oil price ($)" },
+                    { data: exchangerates, label: "USD/EUR exchange rate", yaxis: 2 }
+                ], {
+                    xaxes: [{ mode: "time" }],
+                    yaxes: [{ min: 0 }, {
+                        // align if we are to the right
+                        alignTicksWithAxis: position == "right" ? 1 : null,
+                        position: position,
+                        tickFormatter: euroFormatter
+                    }],
+                    legend: { position: "sw" }
+                });
+            }
+
+            doPlot("right");
+
+        });
+        // Build jQuery Knobs
+        $(".knob").knob();
+
+
+    </script>
+}

@@ -1,0 +1,315 @@
+﻿@{
+    ViewBag.Title = "GoodWorkDetail";
+    Layout = "~/Views/Shared/Index_Layout.cshtml";
+}
+<script type="text/javascript">
+    
+    $(function () {
+        
+        var reg = new RegExp("(^|&)" + "flag" + "=([^&]*)(&|$)");
+
+        var r = window.location.search.substr(1).match(reg);
+       
+
+        var flag = null;
+        if (r != null) {
+            flag= unescape(r[2]);
+
+        } else {
+            flag= null;
+        }
+       
+       
+        
+       
+         if (flag == "m") {
+            $("#most").addClass("huang");
+        } if (flag == "g") {
+            $("#good").addClass("huang");
+        } if (flag == "c") {
+            $("#comment").addClass("huang");
+        } if (flag == "p") {
+            $("#push").addClass("huang");
+        }
+
+    })
+
+</script>
+
+
+
+@section span9{
+    <div  class="container-fluid" style="margin-top:81px;margin-bottom:0" >
+
+<!--显示的框架开始-->
+<div class="waper" style="background:url(images/waper_bg.png) repeat-y;">
+<div class="wa_title">
+<div class="left_ct"></div>
+<div class="right_t"><span><ins>Excellent works</ins><p>优秀作品欣赏</p></span><strong>您所在的位置：<a href="javascript:void(0)">首页</a>/<a href="javascript:void(0)">作品展示</a></strong></div>
+</div>
+
+
+<div class="wa_left">
+<div class="le_u">
+<ul>
+<li id="good" ><a href="/Index/GoodStuWork?flag=g">评分最优展示</a></li>
+<li><a href="/Index/GoodStuWork?flag=m">点击最多</a></li>
+<li><a href="#">评价最多</a></li>
+<li ><a href="#">特别推荐</a></li>
+</ul>
+</div>
+
+<div class="clear"></div>
+<!---tuangou begin---->
+
+</div>
+
+
+<div class="wa_right">
+<div class="w_detail">
+<div class="de_dm">
+<div class="cm_img ">
+<a href="javascript:void(0)" class="png">
+
+</a><img src="~/Content/images/case_list.jpg">
+</div>
+<div class="cm_det png">
+<h1>3D台灯</h1>
+<em class="png"></em>
+<small><i>time:2012-12-02</i>
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="float:right; ">
+        <a class="bds_qzone" title="分享到QQ空间" href="#"></a>
+        <a class="bds_tsina" title="分享到新浪微博" href="#"></a>
+        <a class="bds_tqq" title="分享到腾讯微博" href="#"></a>
+        <a class="bds_renren" title="分享到人人网" href="#"></a>
+        <span class="bds_more">更多</span>
+    </div>
+</small>
+<strong>
+    <h7 class="detail">作品简介：</h7>
+    <em>这是手工课的展示</em>
+    <a href="/Index/GoodStuWork?flag=g" class="flist"></a></strong>
+
+</div>
+</div>
+<div class="de_list">
+<ul>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/tu.jpg" title="神一样的存在"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/tu.jpg" title="不怕神一样的对手"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/tu.jpg" title="就怕猪一样的队友"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/de_list.jpg"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/de_list.jpg"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/de_list.jpg"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/de_list.jpg"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/de_list.jpg"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/de_list.jpg"><img src="~/Content/images/de_list.jpg"></a></li>
+<li><a rel="sexylightbox[group1]" href="~/Content/images/de_list.jpg"><img src="~/Content/images/de_list.jpg"></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+<div class="d_fenye"><a href="javascript:void(0)" class="d_fp png"></a><a href="javascript:void(0)" class="d_fn png"></a></div>
+<div class="clear"></div>
+<div class="id_case">
+  <div class="id_case_bt">
+  <h1><a href="javascript:void(0)"></a></h1>
+</div>
+ <div class="de_img">
+
+<div class="b2 scroll fl">
+<ul class="wl" style="left: -348px;">
+        <li><a href="javascript:void(0)" class="png">
+          <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+        <li><a href="javascript:void(0)" class="png">
+      <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+        <li><a href="javascript:void(0)" class="png">
+      <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+        <li><a href="javascript:void(0)" class="png">
+      <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+               <li><a href="javascript:void(0)" class="png">
+          <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+               <li><a href="javascript:void(0)" class="png">
+          <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+                  <li><a href="javascript:void(0)" class="png">
+          <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+                  <li><a href="javascript:void(0)" class="png">
+          <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+                  <li><a href="javascript:void(0)" class="png">
+          <h3>3D台灯</h3>
+          <p>time:2012/07/15</p>
+        </a><img src="~/Content/images/wlist.jpg"></li>
+
+</ul>
+
+</div> 
+
+</div>
+
+</div>
+    <div class="comment_case">
+  
+     <div class="blogBoder">      </div>
+     <div class="blogComment">
+ <div class="Comment_title">
+     <span>查看评论</span>
+
+ </div>
+<div class="comment_list">
+    
+  
+      
+           <dl class="comment_item comment_topic" id="comment_item_4597773">
+                <h7 class="ptime" style="margin-left:10px; color:#08c"  >item.ReplyAccount</h7> 
+        <dt class="comment_head" floor="3">3 楼 
+           <span class="ptime">item.CreatTime</span> 
+              <span class="ptime"><i>评分：</i>item.score</span> 
+          </dt>
+        <dd class="comment_userface"><a href="/u010066934" target="_blank">
+            <img src="~/Content/images/small.jpg" width="40" height="40"></a></dd><dd class="comment_body">Html.Raw( item.ReplyContent)</dd>
+
+
+           </dl>
+
+        <dl class="comment_item comment_topic" id="comment_item_4597773">
+                <h7 class="ptime" style="margin-left:10px; color:#08c"  >item.ReplyAccount</h7> 
+        <dt class="comment_head" floor="3">3 楼 
+           <span class="ptime">item.CreatTime</span> 
+              <span class="ptime"><i>评分：</i>item.score</span> 
+          </dt>
+        <dd class="comment_userface"><a href="/u010066934" target="_blank">
+            <img src="~/Content/images/small.jpg" width="40" height="40"></a></dd><dd class="comment_body">Html.Raw( item.ReplyContent)</dd>
+
+
+           </dl>
+   
+ 
+        
+
+    <div class="clear"></div>
+
+</div>
+
+</div>
+<div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h7 class="modal-title" id="myModalLabel">添加回复 </h7>
+                </div>
+                <div class="modal-body">
+                    <div class="block">
+                        <div class="navbar navbar-inner block-header">
+                            <div class="muted pull-left">回复信息 </div>
+                        </div>
+                        <div class="block-content collapse in">
+                            <div class="span13">
+                                <form action="" id="addComment" class="form-horizontal" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="BlogID" value="Model.Id" />
+                                        <div class="control-group">
+                                            <label style="width:100px;float:left"     for="selectSuccess">作品打分</label>
+                                            <div class="controls" style="margin-left:100px;">
+                                              <select  name ="comment_score" id="selectSuccess">
+                                              <option value ="1" selected="selected">1</option>
+                                              <option value ="2">2</option>
+                                                  <option value ="3">3</option>
+                                                  <option value ="4">4</option>
+                                                  <option value ="5">5</option>
+                                                  </select>
+                                             
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label style="width:100px;float:left"     for="textarea2">回复内容</label>
+                                            <div class="controls" style="margin-left:100px;">
+                                                <textarea id="textarea2" class="input-xlarge textarea" placeholder="Enter text ..." name="Content" style="width: 510px; height: 200px"></textarea>
+                                            </div>
+                                        </div>
+                                            
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="submitAdd()">提交信息 </button>
+                </div>
+            </div>
+        </div>
+
+ 
+
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+
+<!--显示的框架结束-->
+</div>
+
+
+ 
+
+    }
+
+   @section ScriptBoot{
+     
+        <SCRIPT src="~/Content/js/lanrentuku.js" type=text/javascript></SCRIPT>
+<!--<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script><!--menu xiaoguo--->
+
+<SCRIPT src="~/Content/js/jquery.tools.js" type="text/javascript"></SCRIPT><!--tan chu img-->
+<!--<script type="text/javascript" src="js/lazyload-min.js"></script>  -->
+<script src="~/Content/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="~/Content/js/cd.js" type="text/javascript"></script>
+<script src="~/Content/js/sexylightbox.v2.3.jquery.js" type="text/javascript"></script>
+<SCRIPT type=text/javascript>
+    $(document).ready(function () {
+        SexyLightbox.initialize({ color: 'white', dir: '../Content/images/' });
+    });
+</SCRIPT>
+
+
+<script src="~/Content/js/ciads.js" type="text/javascript"></script>
+<!--guess your love-->
+<!--<script src="js/jquery.tools.min.js" type="text/javascript"></script>-->
+
+
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script><!--baidu share-->
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>     
+        
+        
+        
+
+
+
+       }
