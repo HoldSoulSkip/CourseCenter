@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +18,10 @@ namespace CourseCenter.Models
         public string KeyValue { set; get; } //课程关键字
         public string RelativeSub { set; get; } //关联学科
         public int CourseLevel { set; get; } //课程 层级，一般分为 小中高三层
+        public int AllTime { get; set; }//课时
+        public string CourseType { get; set; }//教学类型
+        public string FitStudent { get; set; }//适用学习者
+        public string FitClass { get; set; }
 
 
     }
