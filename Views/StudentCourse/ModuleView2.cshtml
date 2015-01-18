@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "ModuleView";
     Layout = "~/Views/Shared/student_Layout.cshtml";
 }
@@ -21,6 +21,9 @@
 }
 
 @section span9{
+    <script type="text/javascript">        
+
+    </script>
     <div class="span9" id="content">
         <!-- morris stacked chart -->
 
@@ -34,18 +37,33 @@
                     <div class="span12">
                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
                             <fieldset>
-                                <legend>课程问题形成单元显示</legend>
+                                <legend>课程情境单元显示</legend>
                                 <div class="control-group">
                                     <label class="control-label" for="typeahead">单元名称 </label>
                                     <div class="controls">
                                         @{
                                             if (@ViewBag.Pagemodule != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="牛顿第二定律" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+
+                                            <div class="alert alert-info" style="width: 520px; text-align: center">
+                                                @ViewBag.Pagemodule.ModuleTitle
+                                             
+                                            </div>
+
+                                            </text>
                                             }
                                             else
                                             {
-                                            <text><input type="text" disabled="disabled" class="span6" name="ModuleTitle"></text>
+                                                <text>
+                                            <div class="alert alert-info" style="width: 520px; text-align: center">
+                                                我与地坛
+                                             
+                                            </div>
+
+
+                                            </text>
+                                            
                                             }
                                         }
 
@@ -53,18 +71,25 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="date01">单元课时数</label>
+                                    <label class="control-label" for="date01">单元截止日期</label>
                                     <div class="controls">
 
                                         @{
                                             if (@ViewBag.Pagemodule != null)
                                             {
-                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="1课时">
+                                            <text>
+
+                                            <div class="alert alert-info" style="width: 520px; text-align: center">
+                                                @ViewBag.Pagemodule.DeadlineTime
+                                             
+                                            </div>
+
+
                                             </text>
                                             }
                                             else
                                             {
-                                            <text><input type="text" name="DeadLineTime" disabled="disabled" class="input-xlarge datepicker" id="date01" value="单元课时数">
+                                            <text><input type="text" name="DeadLineTime" disabled="disabled" class="input-xlarge datepicker" id="date01" value="1课时">
                                             </text>
                                             }
 
@@ -73,14 +98,18 @@
 
                                     </div>
                                 </div>
-                                <div class="control-group">
+                                @*<div class="control-group">
                                     <label class="control-label" for="date01">单元开始时间</label>
                                     <div class="controls">
 
                                         @{
                                             if (@ViewBag.Pagemodule != null)
                                             {
-                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.Pagemodule.DeadlineTime">
+                                            <text>
+                                            <div class="alert alert-info" style="width: 520px; text-align: center">
+                                                02/16/14
+                                            </div>
+
                                             </text>
                                             }
                                             else
@@ -93,15 +122,19 @@
 
                                         <p class="help-block">请务必在指定时间内完成</p>
                                     </div>
-                                </div>
-                                <div class="control-group">
+                                </div>*@
+                                @*<div class="control-group">
                                     <label class="control-label" for="date01">单元截止时间</label>
                                     <div class="controls">
 
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.Pagemodule == null)
                                             {
-                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.Pagemodule.DeadlineTime">
+                                            <text>
+                                            <div class="alert alert-info" style="width: 520px; text-align: center">
+                                                02/16/14
+                                            </div>
+
                                             </text>
                                             }
                                             else
@@ -114,16 +147,21 @@
 
                                         <p class="help-block">请务必在指定时间内完成</p>
                                     </div>
-                                </div>
+                                </div>*@
 
-                                <div class="control-group">
+                                @*<div class="control-group">
                                     <label class="control-label" for="date01">单元概述</label>
                                     <div class="controls">
 
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.Pagemodule == null)
                                             {
-                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="提问">
+                                            <text>
+                                            <div class="alert alert-info" style="width: 520px; text-align: center">
+                                                <a class="btn btn-primary" href="@ViewBag.Pagemodule.ModuleFilePath" target="_blank">进入电子学档</a>
+                                                
+                                            </div>
+
                                             </text>
                                             }
                                             else
@@ -136,13 +174,15 @@
 
 
                                     </div>
-                                </div>
+                                </div>*@
                                 <div class="control-group">
                                     <label class="control-label" for="fileInput">电子学档</label>
                                     <div class="controls">
                                         @{
                                             if (@ViewBag.Pagemodule != null)
                                             {
+                                                
+                                            <p>此处把下面的提交作业的功能总结在一个页面中，可以生成一个页面，专门显示电子学档，就是学生的studentwork表了，按照课程把数据罗列出来，学生的各个模块的完成情况</p>
                                             <a class="btn btn-primary" href="@ViewBag.Pagemodule.ModuleFilePath" target="_blank">进入电子学档</a>
                                                  
                                                   
@@ -156,49 +196,65 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="textarea2">问题分析和陈述方法</label>
+                                    <label class="control-label" for="textarea2">模块内容</label>
                                     <div class="controls">
-                                     <div class="well"  style="background-color:rgba(173, 178, 241, 0.42)">
-                                            <p> 实验:用一根绳子牵引着一个小车在粗糙的水平桌面上匀速运动，然后松开手让车自己运动,然后停下来. </p>
- 
-                                          
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            {
+                                                <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
+                                            @Html.Raw(ViewBag.Pagemodule.ModuleContent)
+                                        </div>
+                                            }
+                                            else
+                                            {
+                                        <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
+                                            <p>我们先听英国诗人蒲柏的一段诗:“自然和自然规律，隐藏在黑暗中.上帝说:让牛顿出生吧！于是，一切显现光明.”确实，有力就会运动，没有力就不会运动.这个错误的观点千百年来一直躲藏在黑暗中，一直到牛顿的出现，才使我们真正了解到:力不是维持物体运动状态的原因.而是改变物体运动状态的原因.也就是说力是产生加速度的原因.我们自然会问:力、质量、加速度到底存在什么样的定量关系？先请大家根据生活经验和你所掌握的知识，猜想力、质量、加速度到底存在什么样的定量关系.    </p>
+                                        </div>
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                                @*<div class="control-group">
+                                    <label class="control-label" for="textarea2">核心概念</label>
+                                    <div class="controls">
+                                        <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
+                                            <p>力、质量、加速</p>
+
+
                                         </div>
 
 
                                     </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="textarea2">确定问题、形成问题陈述</label>
+                                </div>*@
+                                @*<div class="control-group">
+                                    <label class="control-label" for="textarea2">思路引导</label>
                                     <div class="controls">
-                                         <div class="well"  style="background-color:rgba(173, 178, 241, 0.42)">
-                                             <p>[问题1]加速度可能跟力有关系，同时也可能跟质量有关系，那么到底怎么来判断加速度是不是跟力有关系呢？ <br />
-学生回答:可以让质量不变，改变力来研究加速度跟力的关系. 同样可以用此方法来研究加速度跟质量之间的关系. <br />教师在此基础上提出“控制变量法”的思想.</p>
- 
-                                           
+                                        <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
+                                            <p>力不是维持物体运动状态的原因.而是改变物体运动状态的原因.也就是说力是产生加速度的原因.我们自然会问:力、质量、加速度到底存在什么样的定量关系？先请大家根据生活经验和你所掌握的知识，猜想力、质量、加速度到底存在什么样的定量关系. </p>
+
+
                                         </div>
 
 
                                     </div>
-                                </div>
-                                
+                                </div>*@
                             </fieldset>
                         </form>
 
                     </div>
-                    <div class="span12" style="float:right">
-                    
-                        <div class="btn-group"  style="float:right">
-                        <a class="btn btn-primary" href="/StudentCourse/ModuleView?id=3&flag=3&CId=2">进入下一单元</a>
-                        <a class="btn btn-primary" href="/StudentCourse/StudentCoursesDetail?id=11">返回课程首页</a>
-                        <a class="btn btn-primary" href="/StudentCourse/CourseIndex">返回我的课程</a>
-                    
+                    <div class="span12" style="float: right">
+
+                        <div class="btn-group" style="float: right">
+                            <a class="btn btn-primary" href="/StudentCourse/ModuleView?id=@ViewBag.Pagemodule.Id&flag=3&CId=@ViewBag.Pagemodule.CourseId">进入下一单元</a>
+                            <a class="btn btn-primary" href="/StudentCourse/StudentCoursesDetail?id=11">返回课程首页</a>
+                            <a class="btn btn-primary" href="/StudentCourse/CourseIndex">返回我的课程</a>
+                        </div>
+
 
                     </div>
-                    
+                </div>
 
-                </div>
-                </div>
-                
             </div>
 
             <!-- /block -->
@@ -211,7 +267,7 @@
                         <form class="form-horizontal" action="/StudentCourse/FinishModule?moduleTag=2" method="post" enctype="multipart/form-data">
                             <fieldset>
                                 <legend>学习课程---<i style="color: #08c; font-size: 14px;">只能提交一次</i></legend>
-                                <input type="hidden" name="CourseId" value="@ViewBag.CId" />
+                                <input type="hidden" name="CourseId" id="CourseId" value="@ViewBag.CId" />
 
 
 
@@ -253,24 +309,65 @@
 
                                     </div>
                                 </div>
+                                @* 添加画板 *@
+                                <div class="control-group">
+                                    <label class="control-label" for="textarea2">使用画板</label>
+                                    <div class="controls">
+                                        <canvas id="canvas" width="600" height="500" style="border: 1px solid;"></canvas>
+                                        <br />
+                                        <span class="btn btn-primary" id="showDraw">打开画板</span>
+                                        <span class="btn btn-primary" id="saveDraw">保存</span>
+                                        <span class="btn btn-primary" id="clearImg">清除图像</span>
+                                    </div>
+                                </div>
                                 @* 课后题 *@
-                                @foreach (var PaperQuestion in ViewBag.selectQuestions)
+                                @if (ViewBag.selectQuestions != null)
                                 {
+                                    foreach (var PaperQuestion in ViewBag.selectQuestions)
+                                    {
+                                        if (PaperQuestion.QuestionType == 0)
+                                        {
                                     <div class="control-group">
-                                        <label class="control-label" for="textarea2">选择题</label>
+                                        <label class="control-label" for="textarea2">单选题</label>
                                         <div class="controls">
                                             <label style="font-size: larger;">
                                                 @PaperQuestion.QTitle
                                             </label>
-                                            <span>A.<input name="r" type="radio" /></span>@PaperQuestion.A
-                                            <br/><span>B.<input name="r" type="radio" /></span>@PaperQuestion.B
-                                            <br/><span>C.<input name="r" type="radio" /></span>@PaperQuestion.C
-                                            <br/><span>D.<input name="r" type="radio" /></span>@PaperQuestion.D
+                                            <span>A.<input name="@PaperQuestion.Id&r" type="radio" /></span>@PaperQuestion.A
+                                            <br />
+                                            <span>B.<input name="@PaperQuestion.Id&r" type="radio" /></span>@PaperQuestion.B
+                                            <br />
+                                            <span>C.<input name="@PaperQuestion.Id&r" type="radio" /></span>@PaperQuestion.C
+                                            <br />
+                                            <span>D.<input name="@PaperQuestion.Id&r" type="radio" /></span>@PaperQuestion.D
                                         </div>
                                     </div>
+                                        }
+                                        else if (PaperQuestion.QuestionType == 1)
+                                        {
+                                    <div class="control-group">
+                                        <label class="control-label" for="textarea2">多选题</label>
+                                        <div class="controls Answer">
+                                            <label style="font-size: larger;">
+                                                @PaperQuestion.QTitle
+                                            </label>
+                                            <input type="hidden" id="@PaperQuestion.Id&Answer" />
+                                            <span>A.<input name="@PaperQuestion.Id&r" answer="A" type="checkbox" class="checkbox" /></span>@PaperQuestion.A
+                                            <br />
+                                            <span>B.<input name="@PaperQuestion.Id&r" answer="B" type="checkbox" class="checkbox" /></span>@PaperQuestion.B
+                                            <br />
+                                            <span>C.<input name="@PaperQuestion.Id&r" answer="C" type="checkbox" class="checkbox" /></span>@PaperQuestion.C
+                                            <br />
+                                            <span>D.<input name="@PaperQuestion.Id&r" answer="D" type="checkbox" class="checkbox" /></span>@PaperQuestion.D
+                                        </div>
+                                    </div>
+                                        }
+                                    }
                                 }
-                                @foreach (var blankQuestions in ViewBag.blankQuestions)
+                                @if (ViewBag.blankQuestions != null)
                                 {
+                                    foreach (var blankQuestions in ViewBag.blankQuestions)
+                                    {
                                     <div class="control-group">
                                         <label class="control-label" for="textarea2">填空题</label>
                                         <div class="controls">
@@ -280,6 +377,7 @@
                                             <textarea name="@blankQuestions.Id"  class="span6"  placeholder="填入答案 ..."></textarea>
                                         </div>
                                     </div>
+                                    }
                                 }
                                 @{
                                     if (@ViewBag.PageWork == null)
@@ -289,6 +387,7 @@
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-primary">保存模块</button>
                                         <button type="reset" class="btn">取消</button>
+
 
                                     </div>
                                     </text>
@@ -320,7 +419,7 @@
     <link href="~/Content/vendors/chosen.min.css" rel="stylesheet" media="screen">
 
     <link href="~/Content/vendors/wysiwyg/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
-
+    <script src="~/Content/js/huaban.js"></script>
     <script src="~/Content/vendors/jquery-1.9.1.js"></script>
     <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Content/vendors/jquery.uniform.min.js"></script>
@@ -341,6 +440,21 @@
         jQuery(document).ready(function () {
             FormValidation.init();
         });
+        //function open() {
+        //    //保存画板
+        //    new Drawing('canvas');
+        //    document.querySelector('#save').addEventListener('click', function () {
+        //        var image = document.querySelector('#canvas').toDataURL();
+        //        localStorage.setItem('canvas', image);
+        //        console.log(localStorage.getItem('canvas'));
+        //    }, false);
+        //    if (localStorage.getItem('canvas')) {
+        //        document.querySelector('#DrawBoardImg').value = localStorage.getItem('canvas');
+
+        //    }
+        //    $("#canvas").css("display", "block");
+        //}
+
 
 
         $(function () {
@@ -370,6 +484,58 @@
                 alert('Finished!, Starting over!');
                 $('#rootwizard').find("a[href*='tab1']").trigger('click');
             });
+        });
+        //Ajax上传图片
+        $(function () {
+            $("#canvas").hide();
+            var b64;
+            $("#showDraw").click(function () {
+
+                new Drawing('canvas');
+                document.querySelector('#saveDraw').addEventListener('click', function () {
+                    var image = document.querySelector('#canvas').toDataURL();
+                    localStorage.setItem('canvas', image);
+                    console.log(localStorage.getItem('canvas'));
+                }, false);
+                if (localStorage.getItem('canvas')) {
+                    //document.querySelector('#DrawBoardImg').value = localStorage.getItem('canvas');
+                    //删除字符串前的提示信息 "data:image/png;base64,"  
+                    b64 = localStorage.getItem('canvas').substring(22);
+                }
+                $("#canvas").slideToggle();
+            });
+            $("#saveDraw").click(function () {
+                $.ajax({
+                    url: "/StudentCourse/Ajax?CourseId=" + $("#CourseId").val() + "&moduleTag=1",
+                    data: { "b64": b64 },
+                    type: "post",
+                    dataType: "text",
+                    success: function (data) {
+                        alert("保存成功!");
+                    }
+
+
+                });
+
+            });
+            $("#clearImg").click(function () {
+                var ctx = document.querySelector('#canvas').getContext('2d');
+                ctx.clearRect(0, 30, 600, 570);
+            });
+        });
+        //复选框的操作
+        $(function () {
+            var Answer;
+            $(".checkbox").click(function () {
+                //$(".Answer").find("input[type=checkbox]").each(function () {
+                if ($(this).attr("selected") = selected) {
+                    var $this = $(this)
+                    Answer = $(this).parent().siblings("input[type=hidden]");
+                    Answer.val() = Answer.val() + $this.attr("answer");
+                }
+                //});
+            });
+
         });
     </script>
 
