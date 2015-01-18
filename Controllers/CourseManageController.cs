@@ -32,9 +32,15 @@ namespace CourseCenter.Controllers
             {
                 int courseId = int.Parse(Request.QueryString["id"]);
                 Course course = db.Course.Where(c => c.Id == courseId).FirstOrDefault();
-                course.CourseStatus = 1;
-                mHelper.Modify<Course>(course);
-                
+                if (db.Module.Where(c => c.CourseId == courseId && c.ModuleTag == 5) != null)
+                {
+                    course.CourseStatus = 1;
+                    mHelper.Modify<Course>(course);
+                }
+                else
+                {
+                    ViewBag.ModifyError = "保存失败!因为没有添加完所有模块!";
+                }
             }
             catch (Exception e)
             { 
