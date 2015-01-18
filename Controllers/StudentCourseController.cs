@@ -57,6 +57,16 @@ namespace CourseCenter.Controllers
         /// <returns></returns>
         public ActionResult StudentCoursesDetail()
         {
+            int courseId = Convert.ToInt32(Request.QueryString["id"]);
+            //课程内容
+            Course course = db.Course.Where(c => c.Id == courseId).FirstOrDefault();
+            ViewBag.course = course;
+            //所有module的表用于教学大纲
+            List<Module> moduleList = db.Module.Where(c => c.CourseId == courseId).ToList();
+            ViewBag.moduleList = moduleList;
+            //教师姓名
+            TeacherInfo teacher = db.TeacherInfo.Where(c => c.Id == course.TeacherId).FirstOrDefault();
+            ViewBag.teacherName = teacher.UserName;
             return View();
         }
 
@@ -243,7 +253,7 @@ namespace CourseCenter.Controllers
 
 
             return View();
-        } 
+        }
         #endregion
 
         #region 学生进入某个课程后 显示的具体内容+ModuleView
@@ -279,7 +289,7 @@ namespace CourseCenter.Controllers
 
             StudentWork work = db.StudentWork.Where(w => w.CourseId == CourseId && w.ModuleTag == tag).FirstOrDefault();
             //查询选择题目---------todo   单选多选要分开，因为checkbox和radio不同
-            List<PaperQuestion> selectQuestions = db.PaperQuestion.Where(t => t.CourseId == CourseId && t.ModuleTag == tag&&t.QuestionType!=2).ToList();
+            List<PaperQuestion> selectQuestions = db.PaperQuestion.Where(t => t.CourseId == CourseId && t.ModuleTag == tag && t.QuestionType != 2).ToList();
             //查询填空题目
             List<PaperQuestion> blankQuestions = db.PaperQuestion.Where(t => t.CourseId == CourseId && t.ModuleTag == tag && t.QuestionType == 2).ToList();
             if (selectQuestions.Count() != 0)
@@ -317,7 +327,7 @@ namespace CourseCenter.Controllers
                         {
                             return View("ModuleView5");
                         }
-        } 
+        }
         #endregion
 
 
@@ -358,7 +368,7 @@ namespace CourseCenter.Controllers
             }
             //todo   完成图片的保存
             db.SaveChanges();
-        } 
+        }
         #endregion
 
 
@@ -406,7 +416,7 @@ namespace CourseCenter.Controllers
             db.SaveChanges();
 
             return RedirectToAction("StudentEnterCourse", new { id = CourseId });
-        } 
+        }
         #endregion
 
 
