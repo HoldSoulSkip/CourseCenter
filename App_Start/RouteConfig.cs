@@ -16,10 +16,7 @@ namespace CourseCenter
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-
-//我的测试踩踩踩
-////冯廷钰的修改
+                defaults: new { controller = "Index", action = "ShowIndex", id = UrlParameter.Optional }
             );
         }
     }

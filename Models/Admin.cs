@@ -7,6 +7,6 @@ namespace CourseCenter.Models
 {
     public class Admin :User
     {
-        public int NewsId { set; get; } //新闻表ID
+        public string Tb_Info { set; get; } //冗余字段
     }
 }

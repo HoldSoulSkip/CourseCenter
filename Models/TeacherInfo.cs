@@ -7,9 +7,6 @@ namespace CourseCenter.Models
 {
     public class TeacherInfo : User
     {
-        public int TeacherCode { set; get; } //教师工号牌
-        public int CourseId { set; get; } //课程id
-
-
+        public string Tb_Info { set; get; } //冗余字段
     }
 }

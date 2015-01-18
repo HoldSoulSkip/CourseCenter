@@ -7,6 +7,7 @@ namespace CourseCenter
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new Common.AuthorityAttribute());
             filters.Add(new HandleErrorAttribute());
         }
     }
