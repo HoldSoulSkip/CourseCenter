@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +19,11 @@ namespace CourseCenter.Controllers
 
         public ActionResult WorksIndex() {
 
+            return View();
+        }
+
+
+        public ActionResult WorksDetail() {
             return View();
         }
     }
