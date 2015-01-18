@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +13,7 @@ namespace CourseCenter.Controllers
     {
 
         DBEntities db = new DBEntities();
+        ModelHelpers mHelper = new ModelHelpers();
 
         #region 根据教师ID 获取他所有的课程信息+Courses
         public ActionResult Courses()
@@ -24,6 +25,23 @@ namespace CourseCenter.Controllers
             return View();
         }
         #endregion
+         // 发布课程 --内容  D大调
+        public ActionResult CoursesPublish()
+        {
+            try
+            {
+                int courseId = int.Parse(Request.QueryString["id"]);
+                Course course = db.Course.Where(c => c.Id == courseId).FirstOrDefault();
+                course.CourseStatus = 1;
+                mHelper.Modify<Course>(course);
+                
+            }
+            catch (Exception e)
+            { 
+                
+            }
+            return RedirectToAction("Courses");
+        }
 
         #region 根据课程Id 进入课程的每一个模块。如果是新建课程 则 每个模块 都是未完成状态+CoursesDetail
         public ActionResult CoursesDetail(string[] id)
