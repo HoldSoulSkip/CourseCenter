@@ -1,0 +1,134 @@
+.position .innerWrapper {
+	POSITION: relative
+}
+A.footerQQ {
+	BACKGROUND-IMAGE:url(../images/qq2.png); POSITION: absolute; WIDTH: 295px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 70px; TOP:0px; CURSOR: pointer; LEFT: 10px
+}
+A.phoneNumber {
+	BACKGROUND-IMAGE:url(../images/tel1.jpg); POSITION: absolute; WIDTH: 300px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 33px; TOP: 8px; RIGHT: 20px
+}
+#SLB-Wrapper {
+	POSITION: absolute; TEXT-ALIGN: left; MARGIN: auto; FONT-FAMILY: Verdana
+}
+#SLB-Wrapper #SLB-Background {
+	POSITION: absolute; FLOAT: left; TOP: 7px; LEFT: 7px
+}
+#SLB-Wrapper #SLB-Top {
+	MARGIN: 0px 0px 0px 18px; BACKGROUND: 100% 0px; HEIGHT: 28px;
+}
+#SLB-Wrapper #SLB-Top A {
+	PADDING-BOTTOM: 0px; MARGIN: 5px 10px; PADDING-LEFT: 0px; WIDTH: 41px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: right; HEIGHT: 16px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+#SLB-Wrapper #SLB-Top A:hover {
+	BACKGROUND-POSITION: 0px -16px
+}
+#SLB-Wrapper #SLB-Top IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; MARGIN: 6px 10px; WIDTH: 41px; FLOAT: right; HEIGHT: 16px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+#SLB-Wrapper #SLB-Top DIV {
+	POSITION: relative; LINE-HEIGHT: 0; WIDTH: 18px; BACKGROUND: no-repeat 0px 0px; HEIGHT: 28px; FONT-SIZE: 0px; LEFT: -18px; float:left;
+}
+#SLB-Wrapper #SLB-Bottom {
+	MARGIN: 0px 18px 0px 0px; BACKGROUND: no-repeat 0px 43%; HEIGHT: 20px
+}
+#SLB-Wrapper #SLB-Bottom #SLB-BottomRight {
+	POSITION: relative; LINE-HEIGHT: 0; WIDTH: 100%; BACKGROUND: no-repeat 100% 43%; FLOAT: right; HEIGHT: 20px; FONT-SIZE: 0px; RIGHT: -18px
+}
+#SLB-Wrapper .SLB-bbnav#SLB-Bottom {
+	HEIGHT: 52px
+}
+#SLB-Wrapper .SLB-bbnav#SLB-Bottom #SLB-BottomRight {
+	HEIGHT: 52px
+}
+#SLB-Wrapper .SLB-bbnav#SLB-Bottom {
+	BACKGROUND-POSITION: 0px 100%
+}
+#SLB-Wrapper .SLB-bbnav#SLB-Bottom #SLB-BottomRight {
+	BACKGROUND-POSITION: 100% 100%
+}
+#SLB-Wrapper #SLB-Contenido {
+	BORDER-LEFT: #000 7px solid; BORDER-RIGHT: #000 7px solid
+}
+#SLB-Wrapper #SLB-Bottom #SLB-Navegador {
+	BORDER-LEFT: 0px; PADDING-BOTTOM: 10px; LINE-HEIGHT: 11px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; FLOAT: left; HEIGHT: 30px; COLOR: #fff; FONT-SIZE: 11px; BORDER-RIGHT: 0px; PADDING-TOP: 10px;
+}
+#SLB-Wrapper #SLB-Navegador #SLB-Right {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 26px; PADDING-RIGHT: 0px; DISPLAY: inline; HEIGHT: 26px; TEXT-DECORATION: none; PADDING-TOP: 0px;
+}
+#SLB-Wrapper #SLB-Navegador #SLB-Left {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 26px; PADDING-RIGHT: 0px; DISPLAY: inline; HEIGHT: 26px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+#SLB-Wrapper #SLB-Navegador #SLB-Right {
+	MARGIN: 0px 18px 0px 10px; BACKGROUND-POSITION: 26px 0px; FLOAT: right;
+}
+#SLB-Wrapper #SLB-Navegador #SLB-Right:hover {
+	BACKGROUND-POSITION: 26px -26px
+}
+#SLB-Wrapper #SLB-Navegador #SLB-Left {
+	BACKGROUND-POSITION: 52px 0px; FLOAT: left; MARGIN-RIGHT: 10px;
+}
+#SLB-Wrapper #SLB-Navegador #SLB-Left:hover {
+	BACKGROUND-POSITION: 52px -26px;
+}
+#SLB-Wrapper #SLB-Navegador STRONG {
+	DISPLAY: block; PADDING-TOP: 5px
+}
+
+
+
+
+
+
+.pbsShowcase UL {width:686px; height:auto; overflow:hidden;}
+.pbsShowcase UL LI {float:left; text-align:center; border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
+.pbsShowcase UL LI DL {DISPLAY: block; WIDTH: 100px; PADDING-TOP: 10px; HEIGHT: 35px}
+.pbsShowcase UL LI DL DT {LINE-HEIGHT: 16px}
+.pbsShowcase UL LI DL DD {FONT-SIZE: 9px; TEXT-TRANSFORM: uppercase}
+.pbsShowcase UL LI P {PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; border-top:1px solid #ccc;}
+.pbsShowcase UL LI P IMG {WIDTH: 80px; HEIGHT: 79px;}
+.pbsShowcase UL LI A {WIDTH: 100px;}
+.pbsShowcase UL LI A:hover { BACKGROUND-COLOR: #f1f1f1}
+
+.pbsShowcase UL LI A:hover P {BACKGROUND-COLOR: #cc0000;}
+
+#innerShowcase {width:686px; height:auto; float:left; margin-top:10px; overflow:hidden;}
+#innerShowcase UL {}
+
+
+.pbsShowcase2 UL {width:915px; height:auto; overflow:hidden;}
+.pbsShowcase2 UL LI {float:left; text-align:center; border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
+.pbsShowcase2 UL LI DL {DISPLAY: block; WIDTH: 124px; PADDING-TOP: 10px; HEIGHT: 35px}
+.pbsShowcase2 UL LI DL DT {LINE-HEIGHT: 16px}
+.pbsShowcase2 UL LI DL DD {FONT-SIZE: 9px; TEXT-TRANSFORM: uppercase}
+.pbsShowcase2 UL LI P {PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; border-top:1px solid #ccc;}
+.pbsShowcase2 UL LI P IMG {WIDTH: 104px; HEIGHT:103px;}
+.pbsShowcase2 UL LI A {WIDTH: 124px;}
+.pbsShowcase2 UL LI A b{display:block;}
+.pbsShowcase2 UL LI A {WIDTH: 124px;}
+.pbsShowcase2 UL LI A:hover { BACKGROUND-COLOR: #f1f1f1}
+
+.pbsShowcase2 UL LI A:hover P {BACKGROUND-COLOR: #cc0000;}
+
+#innerShowcase2 { width:940px; height:auto; margin-top:10px; overflow:hidden; margin-bottom:20px;}
+#innerShowcase2 UL {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

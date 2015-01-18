@@ -1,0 +1,129 @@
+/* CSS Document */
+.tc_ul{
+	list-style:none; margin:0 auto; width:500px;}
+
+.tc_ul li{height:50px; margin-top:30px;
+	}
+	.tc_ul li .tc_Sectionbutton{ height:100px;
+		width:500px;}
+
+
+
+
+.Work_ul {
+    list-style:none; margin:0 auto; width:750px;
+}
+    .Work_ul li {
+        border: solid 1px #08c; height:300px; margin-top:20px;
+    }
+        .Work_ul li dl {
+           display:block; font-size:14px; padding:0px 10px;
+        }
+
+            .Work_ul li dl dt {
+               
+
+            }
+
+
+.myGruop {
+    background-color:#2f96b4;display:block;color:white;width:50px; float:right
+
+}
+#GroupDetail ul li {background-color:#00A3DA;list-style:none; margin:0 auto;float:left
+}
+
+
+
+.wa_right{ width:900px; min-height:879px;_height:889px; float:left; background:#fff; border:1px solid #ccc}
+.w_list{ width:703px; background:#fff; height:auto; padding:15px 0 40px 20px;}
+.news{
+    display:block;
+    margin:5px;
+   border-bottom:1px solid #eee;
+}
+.w_list ul{ display:block;}
+.w_list ul li{ width:162px; height:273px; float:left; position:relative; padding-right:12px; margin-bottom:30px; display:inline;}
+.w_list ul li img{ width:162px; height:217px;}
+.w_list ul li a{ width:162px; height:273px; position:absolute; background:url(../images/work_lbg.png) no-repeat;}
+.w_list ul li a h3{ font-family:"Î¢ÈíÑÅºÚ"; font-size:14px; color:#666; display:block; padding-top:227px; padding-left:20px; font-weight:bold;}
+.w_list ul li a:hover h3{ color:#b22748;}
+.w_list ul li a p{ color:#aaaaaa; font-family:Arial, Helvetica, sans-serif; font-size:10px; display:block; padding-top:15px; text-transform:uppercase;}
+.w_list ul li a:hover{background:url(../images/work_lbg2.png) no-repeat;}
+/**** ÆÀÂÛ*****/
+.blogBoder {
+      width: 900px;
+    min-height: 20px;
+    _height: 20px;
+    margin:10px 0px;
+    background:url(../img/bg-blue.png )repeat-x top;
+    border: 1px solid #ccc;
+}
+.blogComment {
+  width: 900px;
+    min-height: 20px;
+}
+.Comment_title {
+    font-family:'Microsoft YaHei','Microsoft YaHei';
+    font-size:14px;
+    font-weight:800;
+    height:24px;
+    clear:both;
+     margin:0px 50px;
+  
+     border-bottom:2px solid #ccc;
+
+}
+    .Comment_title span {
+        border-bottom-color:#3d84b0;
+        display:block;
+        width:100px;
+        border-bottom:2px solid #3d84b0;
+        padding-bottom:4px;
+    }
+.comment_list{clear: both; width: 800px;margin:0px 50px;
+    min-height: 20px; }
+.comment_list dl{clear: both; display: block; overflow: hidden;position: relative;
+  border-top: 1px solid #ccc;
+  margin: 0;
+  padding-top: 16px; }
+.comment_list dl > dt {
+  float: right;
+  color: #999;
+}
+    .comment_list dl > dd {
+        float:left;
+    }
+.comment_list .comment_body {
+    margin:20px 10px 20px;
+  font-size:12px;
+  width: 57%;
+  word-break: break-all;
+  
+  padding-bottom: 16px;
+}
+
+.comment_list .username {
+  position: absolute;
+  left: 60px;
+  color: #3d84b0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+
+
+
+/****ÄÚÒ³´úÂë******/
+.n_t{ width:800px; height:132px;border-bottom:1px solid #D7E9EE; padding-top:20px; margin-left:80px;}
+.n_ti{ width:107px; height:107px; float:left;}
+.n_ti img{ width:107px; height:107px;}
+.n_td{ width:667px; height:132px; float:left; padding-left:10px;}
+.n_td h5{display:block; font-family:"Î¢ÈíÑÅºÚ"; font-size:24px;  color:#666;}
+.n_td em{background:url(../images/n_de.png) no-repeat; width:567px; font-size:10px;height:25px; display:block; font-style:normal;  text-transform:uppercase;}
+.n_td i{background:url(../images/n_de.png) no-repeat; width:567px; font-size:10px;height:30px; display:block; font-style:normal;  text-transform:uppercase;}
+.n_de{ width:680px; height:500px; padding-top:20px; margin-left:80px;}
+
+.n_td small{ float:right; padding-top:20px;}
+.n_td small a.flist{ width:77px; height:46px;display:block; background:url(../img/flist.png); }
+.n_td small a:hover.flist{ background:url(../img/flist2.png) no-repeat;}

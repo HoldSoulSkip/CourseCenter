@@ -1,0 +1,10 @@
+/* CSS Document */
+.tc_ul{
+	list-style:none; margin:0 auto; width:500px;}
+
+.tc_ul li{height:50px; margin-top:30px;
+	}
+	.tc_ul li .tc_Sectionbutton{ height:100px;
+		width:500px;}
+
+
