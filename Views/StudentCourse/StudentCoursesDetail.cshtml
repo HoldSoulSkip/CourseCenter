@@ -41,7 +41,14 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.CourseName" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+
+                                        <div class="alert alert-info" style="width:520px; text-align:center">
+                                              @ViewBag.course.CourseName
+                                             
+                                            </div>
+
+                                       </text>
                                             }
                                             else
                                             {
@@ -67,7 +74,14 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.teacherName" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+
+<div class="alert alert-info" style="width:520px; text-align:center">
+                                             @ViewBag.teacherName
+                                             
+                                            </div>
+
+                                        </text>
                                             }
                                             else
                                             {
@@ -89,7 +103,13 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.AllTime" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+                                        <div class="alert alert-info" style="width:520px; text-align:center">
+                                            @ViewBag.course.AllTime
+                                             
+                                            </div>
+
+</text>
                                             }
                                             else
                                             {
@@ -110,7 +130,14 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             {
-                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.course.BeginTime">
+                                            <text>
+                                                                  <div class="alert alert-info" style="width:520px; text-align:center">
+                                           @ViewBag.course.BeginTime
+                                             
+                                            </div>
+
+
+                                        
                                             </text>
                                             }
                                             else
@@ -136,7 +163,12 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             {
-                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.course.EndTime">
+                                            <text>
+                                                                                    <div class="alert alert-info" style="width:520px; text-align:center">
+                                           @ViewBag.course.EndTime
+                                             
+                                            </div>
+                                       
                                             </text>
                                             }
                                             else
@@ -159,7 +191,12 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.RelativeSub" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+                                        <div class="alert alert-info" style="width:520px; text-align:center">
+                                           @ViewBag.course.RelativeSub
+                                             
+                                            </div>
+</text>
                                             }
                                             else
                                             {
@@ -179,7 +216,14 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.KeyValue" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+
+                                         <div class="alert alert-info" style="width:520px; text-align:center">
+                                           @ViewBag.course.KeyValue
+                                             
+                                            </div>
+</text>
+                                      
                                             }
                                             else
                                             {
@@ -216,7 +260,7 @@
                                                         @foreach (CourseCenter.Models.Module m in ViewBag.moduleList){
                                                         <tr>
 
-                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=@m.Id&flag=@m.ModuleTag&CId=@m.CourseId">导入课程</a></td>
+                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=@m.Id&flag=@m.ModuleTag&CId=@m.CourseId">导入模块</a></td>
                                                             <td>@m.ModuleTitle</td>
                                                             <td>@m.DeadlineTime</td>
                                                             <td>已完成</td>
@@ -240,7 +284,13 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.FitStudent" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+                                         <div class="alert alert-info" style="width:520px; text-align:center">
+                                           @ViewBag.course.FitStudent
+                                             
+                                            </div>
+
+                                      </text>
                                             }
                                             else
                                             {
@@ -264,7 +314,13 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.CourseType" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+
+                                         <div class="alert alert-info" style="width:520px; text-align:center">
+                                           @ViewBag.course.CourseType
+                                             
+                                            </div>
+</text>
                                             }
                                             else
                                             {
@@ -286,7 +342,12 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.FitClass" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+                                        <div class="alert alert-info" style="width:520px; text-align:center">
+                                           @ViewBag.course.FitClass
+                                             
+                                            </div>
+</text>
                                             }
                                             else
                                             {
@@ -306,7 +367,13 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.CourseAttend" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+                                                               <div class="alert alert-info" style="width:520px; text-align:center">
+                                           @ViewBag.course.CourseAttend
+                                             
+                                            </div>
+                                        
+                                      </text>
                                             }
                                             else
                                             {
@@ -328,7 +395,18 @@
                                         @{
                                             if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.CourseLevel" class="span6" name="ModuleTitle" ></text>
+                                            <text>
+                                         <div class="alert alert-info" style="width:520px; text-align:center">  
+                                          if(@ViewBag.course.CourseLevel==0) {
+                                         小
+                                             }else if(@ViewBag.course.CourseLevel==1){ 中
+                                             }else{
+                                             高
+                                             }
+
+                                             
+                                            </div>
+                                      </text>
                                             }
                                             else
                                             {
