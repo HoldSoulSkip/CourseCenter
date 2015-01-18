@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "ScoreIndex";
     Layout = "~/Views/Shared/student_Layout.cshtml";
 }
@@ -49,7 +49,10 @@
               <table cellpadding="0" cellspacing="0" border="0" style="height:200px;" class="table table-striped table-bordered"   id="example2">
                
 
-                                @foreach (var item in ViewBag.listCs as List<CourseCenter.Models.CouScore>)
+                  @if (ViewBag.listCs!=null)
+                  {
+                  
+                                foreach (var item in ViewBag.listCs as List<CourseCenter.Models.CouScore>)
                                 {
                                     
                                      <div class="span3">     
@@ -60,6 +63,11 @@
                                          <h7 style="color:#51a351"> 模块 @item.ModuleTag </h7>
                                 </div>
                                 }
+                      }else{
+                      <text>
+                  <h7>暂时没有任何成绩</h7>
+                  </text>
+                  }
                 
 
                            
