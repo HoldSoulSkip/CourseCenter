@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "CourseNew";
     Layout = "~/Views/Shared/CouserAndStudent.cshtml";
 }
@@ -24,7 +24,7 @@
                                 <div class="control-group">
                                     <label class="control-label" for="typeahead">课程名称 </label>
                                     <div class="controls">
-                                        <input name="CourseName" class="input-xlarge focused" id="focusedInput" type="text" >
+                                        <input name="CourseName" class="input-xlarge focused" id="focusedInput" type="text">
                                     </div>
                                 </div>
 
@@ -38,15 +38,15 @@
                                 <div class="control-group">
                                     <label class="control-label" for="date01">课程预计开始时间</label>
                                     <div class="controls">
-                                        <input  type="text" name="BeginTime" class="input-xlarge datepicker" id="date01" >
+                                        <input type="text" name="BeginTime" class="input-xlarge datepicker" id="date01">
                                         <p class="help-block">请务必在指定时间内完成</p>
                                     </div>
                                 </div>
 
-                                  <div class="control-group">
+                                <div class="control-group">
                                     <label class="control-label" for="date01">课程预计结束时间</label>
                                     <div class="controls">
-                                        <input  type="text" name="EndTime" class="input-xlarge datepicker" id="date01" >
+                                        <input type="text" name="EndTime" class="input-xlarge datepicker" id="date01">
                                         <p class="help-block">请务必在指定时间内完成</p>
                                     </div>
                                 </div>
@@ -54,26 +54,48 @@
                                 <div class="control-group">
                                     <label class="control-label" for="typeahead">课程关联学科 </label>
                                     <div class="controls">
-                                            <input name="RelativeSub" class="input-xlarge focused" id="focusedInput" type="text" >
+                                        <input name="RelativeSub" class="input-xlarge focused" id="focusedInput" type="text">
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label" for="typeahead">课程关键词 </label>
                                     <div class="controls">
-                                            <input name="KeyValue" class="input-xlarge focused" id="focusedInput" type="text" >
-
+                                        <input name="KeyValue" class="input-xlarge focused" id="focusedInput" type="text">
                                     </div>
                                 </div>
-
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">总课时数 </label>
+                                    <div class="controls">
+                                        <input name="AllTime" class="input-xlarge focused" id="focusedInput" type="text">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">教学类型 </label>
+                                    <div class="controls">
+                                        <input name="CourseType" class="input-xlarge focused" id="focusedInput" type="text">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">适用学习者 </label>
+                                    <div class="controls">
+                                        <input name="FitStudent" class="input-xlarge focused" id="focusedInput" type="text">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">适用年级 </label>
+                                    <div class="controls">
+                                        <input name="FitClass" class="input-xlarge focused" id="focusedInput" type="text">
+                                    </div>
+                                </div>
                                 <div class="control-group">
                                     <label class="control-label" for="typeahead">课程层级 </label>
                                     <div class="controls">
-                                            <select name="CourseLevel" id="selectSuccess">
-                                                <option value="0" >小</option>
-                                                <option value="1">中</option>
-                                                <option value="2">高</option>
-                                            </select>
+                                        <select name="CourseLevel" id="selectSuccess">
+                                            <option value="0">小</option>
+                                            <option value="1">中</option>
+                                            <option value="2">高</option>
+                                        </select>
 
                                     </div>
                                 </div>
@@ -103,7 +125,7 @@
     </div>
 }
 @section booterScript{
-     <link href="~/Content/vendors/datepicker.css" rel="stylesheet" media="screen">
+    <link href="~/Content/vendors/datepicker.css" rel="stylesheet" media="screen">
     <link href="~/Content/vendors/uniform.default.css" rel="stylesheet" media="screen">
     <link href="~/Content/vendors/chosen.min.css" rel="stylesheet" media="screen">
 
