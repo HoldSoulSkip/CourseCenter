@@ -1,4 +1,4 @@
-﻿using CourseCenter.Common;
+using CourseCenter.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +44,7 @@ namespace CourseCenter.Controllers
         /// <returns></returns>
         public ActionResult CoursesAllExcSelected()
         {
-            List<Course> listCouse = db.Course.SqlQuery("select * from Courses cr where cr.Id not in (select CourseId  from Stu_Course where StudentId=@Id ) ", new SqlParameter("@Id", studentId)).ToList();
+            List<Course> listCouse = db.Course.SqlQuery("select * from Courses cr where cr.Id not in (select CourseId  from Stu_Course where StudentId=@Id ) and cr.CourseStatus=1 ", new SqlParameter("@Id", studentId)).ToList();
             ViewBag.Course = listCouse;
             return View();
         }
