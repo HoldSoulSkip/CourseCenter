@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "ModuleView";
     Layout = "~/Views/Shared/student_Layout.cshtml";
 }
@@ -45,6 +45,17 @@
                                             if (@ViewBag.Pagemodule != null)
                                             { 
                                             <text>
+
+                                            <div class="alert alert-info" style="width: 520px; text-align: center">
+                                                @ViewBag.Pagemodule.ModuleTitle
+                                             
+                                            </div>
+
+                                            </text>
+                                            }
+                                            else
+                                            {
+                                                <text>
                                             <div class="alert alert-info" style="width: 520px; text-align: center">
                                                 我与地坛
                                              
@@ -52,17 +63,7 @@
 
 
                                             </text>
-                                            }
-                                            else
-                                            {
-                                            <text>
-
-                                            <div class="alert alert-info" style="width: 520px; text-align: center">
-                                                导入新课
-                                             
-                                            </div>
-
-                                            </text>
+                                            
                                             }
                                         }
 
@@ -70,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="date01">单元课时数</label>
+                                    <label class="control-label" for="date01">单元截止日期</label>
                                     <div class="controls">
 
                                         @{
@@ -79,7 +80,7 @@
                                             <text>
 
                                             <div class="alert alert-info" style="width: 520px; text-align: center">
-                                                一课时
+                                                @ViewBag.Pagemodule.DeadlineTime
                                              
                                             </div>
 
@@ -97,7 +98,7 @@
 
                                     </div>
                                 </div>
-                                <div class="control-group">
+                                @*<div class="control-group">
                                     <label class="control-label" for="date01">单元开始时间</label>
                                     <div class="controls">
 
@@ -121,13 +122,13 @@
 
                                         <p class="help-block">请务必在指定时间内完成</p>
                                     </div>
-                                </div>
-                                <div class="control-group">
+                                </div>*@
+                                @*<div class="control-group">
                                     <label class="control-label" for="date01">单元截止时间</label>
                                     <div class="controls">
 
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.Pagemodule == null)
                                             {
                                             <text>
                                             <div class="alert alert-info" style="width: 520px; text-align: center">
@@ -146,18 +147,19 @@
 
                                         <p class="help-block">请务必在指定时间内完成</p>
                                     </div>
-                                </div>
+                                </div>*@
 
-                                <div class="control-group">
+                                @*<div class="control-group">
                                     <label class="control-label" for="date01">单元概述</label>
                                     <div class="controls">
 
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.Pagemodule == null)
                                             {
                                             <text>
                                             <div class="alert alert-info" style="width: 520px; text-align: center">
-                                                导入课程
+                                                <a class="btn btn-primary" href="@ViewBag.Pagemodule.ModuleFilePath" target="_blank">进入电子学档</a>
+                                                
                                             </div>
 
                                             </text>
@@ -172,7 +174,7 @@
 
 
                                     </div>
-                                </div>
+                                </div>*@
                                 <div class="control-group">
                                     <label class="control-label" for="fileInput">电子学档</label>
                                     <div class="controls">
@@ -194,16 +196,26 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="textarea2">情境和主题</label>
+                                    <label class="control-label" for="textarea2">模块内容</label>
                                     <div class="controls">
+                                        @{
+                                            if (@ViewBag.Pagemodule != null)
+                                            {
+                                                <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
+                                           @Html.Raw(ViewBag.Pagemodule.ModuleContent)
+                                        </div>
+                                            }
+                                            else
+                                            {
                                         <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
                                             <p>我们先听英国诗人蒲柏的一段诗:“自然和自然规律，隐藏在黑暗中.上帝说:让牛顿出生吧！于是，一切显现光明.”确实，有力就会运动，没有力就不会运动.这个错误的观点千百年来一直躲藏在黑暗中，一直到牛顿的出现，才使我们真正了解到:力不是维持物体运动状态的原因.而是改变物体运动状态的原因.也就是说力是产生加速度的原因.我们自然会问:力、质量、加速度到底存在什么样的定量关系？先请大家根据生活经验和你所掌握的知识，猜想力、质量、加速度到底存在什么样的定量关系.    </p>
                                         </div>
-
+                                            }
+                                        }
 
                                     </div>
                                 </div>
-                                <div class="control-group">
+                                @*<div class="control-group">
                                     <label class="control-label" for="textarea2">核心概念</label>
                                     <div class="controls">
                                         <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
@@ -214,8 +226,8 @@
 
 
                                     </div>
-                                </div>
-                                <div class="control-group">
+                                </div>*@
+                                @*<div class="control-group">
                                     <label class="control-label" for="textarea2">思路引导</label>
                                     <div class="controls">
                                         <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
@@ -226,7 +238,7 @@
 
 
                                     </div>
-                                </div>
+                                </div>*@
                             </fieldset>
                         </form>
 
@@ -234,7 +246,7 @@
                     <div class="span12" style="float: right">
 
                         <div class="btn-group" style="float: right">
-                            <a class="btn btn-primary" href="/StudentCourse/ModuleView?id=2&flag=2&CId=2">进入下一单元</a>
+                            <a class="btn btn-primary" href="/StudentCourse/ModuleView?id=@ViewBag.Pagemodule.Id&flag=2&CId=@ViewBag.Pagemodule.CourseId">进入下一单元</a>
                             <a class="btn btn-primary" href="/StudentCourse/StudentCoursesDetail?id=11">返回课程首页</a>
                             <a class="btn btn-primary" href="/StudentCourse/CourseIndex">返回我的课程</a>
 
