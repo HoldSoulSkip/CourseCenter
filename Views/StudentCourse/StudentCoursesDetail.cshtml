@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "StudentCoursesDetail";
     Layout = "~/Views/Shared/student_Layout.cshtml";
 }
@@ -39,9 +39,9 @@
                                     <label class="control-label" for="typeahead">课程名称 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.CourseName" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
@@ -65,9 +65,9 @@
                                     <label class="control-label" for="typeahead">课程教学团队 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.teacherName" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
@@ -87,9 +87,9 @@
                                     <label class="control-label" for="typeahead">课程总课时数 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.AllTime" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
@@ -108,9 +108,9 @@
                                     <div class="controls">
 
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             {
-                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.Pagemodule.DeadlineTime">
+                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.course.BeginTime">
                                             </text>
                                             }
                                             else
@@ -120,7 +120,6 @@
                                                 02/16/14
                                              
                                             </div>
-                                  
                                             </text>
                                             }
 
@@ -135,9 +134,9 @@
                                     <div class="controls">
 
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             {
-                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.Pagemodule.DeadlineTime">
+                                            <text><input disabled="disabled" type="text" name="DeadLineTime" class="input-xlarge datepicker" id="date01" value="@ViewBag.course.EndTime">
                                             </text>
                                             }
                                             else
@@ -158,9 +157,9 @@
                                     <label class="control-label" for="typeahead">课程所属学科 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.RelativeSub" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
@@ -178,9 +177,9 @@
                                     <label class="control-label" for="typeahead">课程关键词 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.KeyValue" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
@@ -205,73 +204,26 @@
                                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
                                                     <thead>
                                                         <tr>
-
+                                                            <th>查看模块</th>
                                                             <th>课程单元名称</th>
-                                                            <th>课程单元概述</th>
-                                                            <th>课程单元类型</th>
-                                                            <th>课程单元课时数</th>
+                                                            <th>课程单元截止日期</th>
                                                             <th>单元状态</th>
 
 
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach (CourseCenter.Models.Module m in ViewBag.moduleList){
                                                         <tr>
 
-                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=1&CId=2">导入课程</a></td>
-                                                            <td>教师活动</td>
-                                                            <td>情景单元</td>
-                                                            <td>1课时</td>
-                                                            <td>未完成</td>
+                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=@m.Id&flag=@m.ModuleTag&CId=@m.CourseId">导入课程</a></td>
+                                                            <td>@m.ModuleTitle</td>
+                                                            <td>@m.DeadlineTime</td>
+                                                            <td>已完成</td>
 
 
                                                         </tr>
-                                                        <tr>
-
-                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=2&CId=2">推进新课</a></td>
-                                                            <td>提问</td>
-                                                            <td>问题形成单元</td>
-                                                            <td>1课时</td>
-                                                            <td>未完成</td>
-
-
-                                                        </tr>
-                                                        <tr>
-
-                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=3&CId=2">推进新课</a></td>
-                                                            <td>探究</td>
-                                                            <td>解决计划单元</td>
-                                                            <td>1课时</td>
-                                                            <td>未完成</td>
-
-
-                                                        </tr>
-                                                        <tr>
-
-                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=4&CId=2">推进新课</a></td>
-                                                            <td>实验</td>
-                                                            <td>计划实施单元</td>
-                                                            <td>1课时</td>
-                                                            <td>未完成</td>
-
-
-                                                        </tr>
-                                                        <tr>
-
-                                                            <td><a class="btn btn-success" href="/StudentCourse/ModuleView?id=2&flag=5&CId=2">课程小结</a></td>
-                                                            <td>小结</td>
-                                                            <td>总结和评价单元</td>
-                                                            <td>1课时</td>
-                                                            <td>未完成</td>
-
-
-                                                        </tr>
-
-
-
-
-
-
+                                                        }
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -281,35 +233,14 @@
                                     </div>
                                 </div>
 
-                                <div class="control-group">
-                                    <label class="control-label" for="typeahead">课程语言 </label>
-                                    <div class="controls">
-                                        @{
-                                            if (@ViewBag.Pagemodule != null)
-                                            { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
-                                            }
-                                            else
-                                            {
-                                            <text>
-                                        <div class="alert alert-info" style="width:520px; text-align:center">
-                                                中文
-                                             
-                                            </div>
-           </text>
-                                            }
-                                        }
-
-
-                                    </div>
-                                </div>
+                       
                                 <div class="control-group">
                                     <label class="control-label" for="typeahead">适用学习者 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.FitStudent" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
@@ -331,9 +262,9 @@
                                     <label class="control-label" for="typeahead">适用教学类型 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.CourseType" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
@@ -353,9 +284,9 @@
                                     <label class="control-label" for="typeahead">适用教学年级 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.FitClass" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
@@ -373,9 +304,31 @@
                                     <label class="control-label" for="typeahead">课程容量 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.course != null)
                                             { 
-                                            <text><input disabled="disabled" type="text" value="@ViewBag.Pagemodule.ModuleTitle" class="span6" name="ModuleTitle" ></text>
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.CourseAttend" class="span6" name="ModuleTitle" ></text>
+                                            }
+                                            else
+                                            {
+                                            <text>
+                     <div class="alert alert-info" style="width:520px; text-align:center">
+                                           适中
+                                             
+                                            </div>
+                                        </text>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">课程层级 </label>
+                                    <div class="controls">
+                                        @{
+                                            if (@ViewBag.course != null)
+                                            { 
+                                            <text><input disabled="disabled" type="text" value="@ViewBag.course.CourseLevel" class="span6" name="ModuleTitle" ></text>
                                             }
                                             else
                                             {
