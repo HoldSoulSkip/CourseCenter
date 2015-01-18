@@ -18,7 +18,7 @@ namespace CourseCenter
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 
-//我的测试
+//我的测试踩踩踩
             );
         }
     }
