@@ -25,14 +25,15 @@ namespace CourseCenter.Controllers
             return View();
         }
         #endregion
-         // 发布课程 --内容  D大调
+        // 发布课程 --内容  D大调
         public ActionResult CoursesPublish()
         {
             try
             {
                 int courseId = int.Parse(Request.QueryString["id"]);
                 Course course = db.Course.Where(c => c.Id == courseId).FirstOrDefault();
-                if (db.Module.Where(c => c.CourseId == courseId && c.ModuleTag == 5) != null)
+                Module module =db.Module.Where(c => c.CourseId == courseId && c.ModuleTag == 5).FirstOrDefault();
+                if (module != null)
                 {
                     course.CourseStatus = 1;
                     mHelper.Modify<Course>(course);
@@ -43,8 +44,8 @@ namespace CourseCenter.Controllers
                 }
             }
             catch (Exception e)
-            { 
-                
+            {
+
             }
             return RedirectToAction("Courses");
         }
@@ -56,20 +57,20 @@ namespace CourseCenter.Controllers
             ViewBag.courseId = courseId;
             List<Module> listModule = db.Module.Where(m => m.CourseId == courseId).ToList();
             //完成课程的信息显示
-                foreach (var lm in listModule)
-                {
-                    if (lm.ModuleTag == 1)
-                        ViewBag.lm1 = lm;
-                    if (lm.ModuleTag == 2)
-                        ViewBag.lm2 = lm;
-                    if (lm.ModuleTag == 3)
-                        ViewBag.lm3 = lm;
-                    if (lm.ModuleTag == 4)
-                        ViewBag.lm4 = lm;
-                    if (lm.ModuleTag == 5)
-                        ViewBag.lm5 = lm;
-                }
-           
+            foreach (var lm in listModule)
+            {
+                if (lm.ModuleTag == 1)
+                    ViewBag.lm1 = lm;
+                if (lm.ModuleTag == 2)
+                    ViewBag.lm2 = lm;
+                if (lm.ModuleTag == 3)
+                    ViewBag.lm3 = lm;
+                if (lm.ModuleTag == 4)
+                    ViewBag.lm4 = lm;
+                if (lm.ModuleTag == 5)
+                    ViewBag.lm5 = lm;
+            }
+
             return View();
         }
         #endregion
