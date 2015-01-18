@@ -1,36 +1,16 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+   @RenderSection("head", false)
+   
     
-    <head>
-        <title>@ViewBag.Title</title>
-
-                                                  <style>
-#editor {overflow:scroll; border:1px solid #0088cc;min-height:300px;}
-</style>
-        <!-- Bootstrap -->
-        <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <link href="~/Content/assets/styles.css" rel="stylesheet" media="screen">
-        <link href="~/Content/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
-        <link href="~/Content/bootstrap/css/teacherCourse.css" rel="stylesheet" media="screen">
-     
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-
-              <!-- 乱码的原因是没有设置参数-->
-         <meta http-equiv="x-ua-compatible" content="ie=9" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <script src="~/Content/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-      
-    </head>
-    
-    <body>
-           @RenderBody()
-        
+</head>
+<body>
+    @RenderBody()
+      <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -38,7 +18,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Admin Panel</a>
+                    <a class="brand" href="#">Teacher Panels</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
@@ -47,11 +27,11 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="#">个人信息</a>
+                                        <a tabindex="-1" href="/Index/ShowIndex">回到首页</a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a tabindex="-1" href="/Home/loginOut">Logout</a>
+                                        <a tabindex="-1" href="/Home/loginOut">退出</a>
                                     </li>
                                 </ul>
                             </li>
@@ -148,27 +128,30 @@
                         <li id="Home">
                             <a href="/Home/TeacherIndex"><i class="icon-chevron-right"></i> 主页</a>
                         </li>
+                        <!---
                         <li>
                             <a href="calendar.html"><i class="icon-chevron-right"></i> 日程管理</a>
                         </li>
-                  <li>
-                            <a href="stats.html"><i class="icon-chevron-right"></i> 课程统计 (Charts)</a>
-                        </li>
-                      
+                    
+                        
+                  <li id="StudentScore">
+                            <a href="#"><i class="icon-chevron-right"></i> 课程统计</a>
+                        </li>-->
+                        
                         <li id="LearnerManage" >
                             <a href="/LearnerManage/Learners"><i class="icon-chevron-right"></i> 学生管理</a>
                       </li>
                               <li id="CourseManage">
                             <a href="/CourseManage/Courses"><i class="icon-chevron-right"></i>课程管理</a>
                         </li>
-                       <li id="GetPersonalInfo">
+                        <li id="GetPersonalInfo">
                             <a href="/PersonalManage/GetPersonalInfo"><i class="icon-chevron-right"></i> 个人中心</a>
                         </li>
                   <li>
                             <a href="interface.html"><i class="icon-chevron-right"></i> UI & Interface</a>
                         </li>
-                        <li id="QusetionManage">
-                            <a href="/QusetionManage/QusetionCenter"><i class="icon-chevron-right"></i> 互动消息</a>
+                         <li>
+                            <a href="/QusetionManage/QusetionCenter"><span class="badge badge-success pull-right">@ViewBag.newStamp</span> 互动消息</a>
                         </li>
                         <li>
                             <a href="#"><span class="badge badge-success pull-right">812</span> Invoices</a>
@@ -176,18 +159,17 @@
                       
                     </ul>
                 </div>
+                
                 <!--/span-->
-                @RenderSection("span9", false)
+                @RenderSection("span9",false)
             </div>
             <hr>
             <footer>
-                <p> Vincent Gabriel 2013</p>
+                <p>&copy; Vincent Gabriel 2013</p>
             </footer>
         </div>
-        <!--/.fluid-container-->
-      @RenderSection("booterScript")
-          @RenderSection("ModalShow",false)
+     @RenderSection("booterScript",false)
 
-    </body>
-
+  
+</body>
 </html>
