@@ -393,30 +393,35 @@
                                     <label class="control-label" for="typeahead">课程层级 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.course != null)
-                                            { 
-                                            <text>
-                                         <div class="alert alert-info" style="width:520px; text-align:center">  
-                                          if(@ViewBag.course.CourseLevel==0) {
-                                         小
-                                             }else if(@ViewBag.course.CourseLevel==1){ 中
-                                             }else{
-                                             高
-                                             }
-
-                                             
-                                            </div>
-                                      </text>
-                                            }
-                                            else
+                                            if(@ViewBag.course.CourseLevel==0)
                                             {
-                                            <text>
-                     <div class="alert alert-info" style="width:520px; text-align:center">
-                                           适中
-                                             
-                                            </div>
-                                        </text>
+                                          <text>
+                                         <div class="alert alert-info" style="width:520px; text-align:center">  
+                                           
+                                         小  </div>
+                                            </text>
                                             }
+                                            else if (@ViewBag.course.CourseLevel == 1)
+                                            {  
+                                                <text><div class="alert alert-info" style="width:520px; text-align:center">  
+                                           
+                                         中  </div>
+                                        </text>
+                                            }else
+                                            {
+                                               <text>
+                                                <div class="alert alert-info" style="width:520px; text-align:center">  
+                                           
+                                         中  </div>
+                                        </text>
+                                                
+                                            }
+                                             
+                                          
+                                            }
+                                     
+                                           
+                                          
                                         }
 
 
