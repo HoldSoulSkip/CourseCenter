@@ -19,7 +19,7 @@ namespace CourseCenter.Controllers
 {
     public class StudentCourseController : Controller
     {
-
+       //nihao
         DBEntities db = new DBEntities();
         //获取用户(学生)cookie，cookie存储是ID
         string studentId = TakeCookie.GetCookie("userId");
