@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "创建课程";
     Layout = "~/Views/Shared/CouserAndStudent.cshtml";
 }
@@ -17,7 +17,7 @@
                 </div>
                 <div class="block-content collapse in">
                     <div class="span12">
-                        <form class="form-horizontal" action="/ModuleManage/AddModule?moduleTag=2" method="post" id="AddModule" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="/ModuleManage/AddModule?moduleTag=1" method="post" id="AddModule" enctype="multipart/form-data">
                             <fieldset>
                                 <legend>导入新课</legend>
 
@@ -363,8 +363,6 @@
                 $(".datepicker").datepicker();
                 $(".uniform_on").uniform();
                 $(".chzn-select").chosen();
-
-
 
                 var selectqTag = 1;
                 $('#addSelectQuestion').click(function () {
