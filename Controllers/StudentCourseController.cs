@@ -1,4 +1,4 @@
-using CourseCenter.Common;
+﻿using CourseCenter.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,8 @@ using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Text;
 using System.Web.Script.Serialization;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 
 namespace CourseCenter.Controllers
@@ -57,7 +59,7 @@ namespace CourseCenter.Controllers
         /// <returns></returns>
         public ActionResult StudentCoursesDetail()
         {
-            int courseId=Convert.ToInt32(Request.QueryString["id"]);
+            int courseId = Convert.ToInt32(Request.QueryString["id"]);
             //课程内容
             Course course = db.Course.Where(c => c.Id == courseId).FirstOrDefault();
             ViewBag.course = course;
@@ -253,7 +255,7 @@ namespace CourseCenter.Controllers
 
 
             return View();
-        } 
+        }
         #endregion
 
         #region 学生进入某个课程后 显示的具体内容+ModuleView
@@ -266,7 +268,7 @@ namespace CourseCenter.Controllers
         /// <returns></returns>
         public ActionResult ModuleView()
         {
-            
+
             //if()
             string CId = Request.QueryString["CId"]; ///属于哪一门课程
             int CourseId = Convert.ToInt32(CId);
@@ -277,9 +279,6 @@ namespace CourseCenter.Controllers
                     ViewBag.CId = CId; //保存
 
                 }
-                
-
-
 
                 string id = Request.QueryString["id"]; ///查看的是模块的id
                 if (id != null)
@@ -335,11 +334,9 @@ namespace CourseCenter.Controllers
             }
             else
             {
-                ViewBag.Info = "请先选择课程";
-                return RedirectToAction("CoursesAllExcSelected");
-
+                return RedirectToAction("StudentEnterCourse", new { id = Convert.ToInt32(CId) });
             }
-        } 
+        }
         #endregion
 
 
@@ -354,25 +351,27 @@ namespace CourseCenter.Controllers
             int moduleTag = Convert.ToInt32(Request.QueryString["moduleTag"]);
             string CId = Request.QueryString["CourseId"].ToString();
             string ImageBase64 = Request["b64"].ToString();
+            //string guid = DateTime.UtcNow.ToUniversalTime().ToString(
             StudentWorkImage Image = new StudentWorkImage()
             {
                 CourseId = Convert.ToInt32(CId),
                 ModuleTag = moduleTag,
-                FilePath = DateTime.Now.ToString() + "&" + studentId + ".jpg",
+                FilePath = DateTime.Now.ToString("yyyymmddhhmmss") + "&" + studentId + ".png",
                 StudentId = new Guid(studentId)
             };
             db.StudentWorkImage.Add(Image);
 
             if (ImageBase64 != null)
             {
-                String savePath = Server.MapPath("~/StudentFile/StudentWorkImg");
+                String savePath = Server.MapPath("~/StudentFile/StudentWorkImg/");
                 try
                 {
-                    FileStream fs = new FileStream(savePath + "/" + Image.FilePath + ".png", FileMode.Create);
+                    //FileStream fs = new FileStream(savePath + "/" + Image.FilePath + ".png", FileMode.Create);
                     byte[] bytes = Convert.FromBase64String(ImageBase64);
-
-                    fs.Write(bytes, 0, bytes.Length);
-                    fs.Close();
+                    MemoryStream ms = new MemoryStream(bytes);
+                    Bitmap bmps = new Bitmap(ms);
+                    string s = savePath + Image.FilePath;
+                    bmps.Save(savePath + Image.FilePath, ImageFormat.Png);
                 }
                 catch (Exception ex)
                 {
@@ -380,7 +379,7 @@ namespace CourseCenter.Controllers
             }
             //todo   完成图片的保存
             db.SaveChanges();
-        } 
+        }
         #endregion
 
 
@@ -428,7 +427,7 @@ namespace CourseCenter.Controllers
             db.SaveChanges();
 
             return RedirectToAction("StudentEnterCourse", new { id = CourseId });
-        } 
+        }
         #endregion
 
 
