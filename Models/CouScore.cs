@@ -14,6 +14,6 @@ namespace CourseCenter.Models
         public string ModuleScore{ get; set; }//每个模块教师给的分数
         public double ModuleTotalScore{ get; set; }//每个模块最终的成绩
         public double ModuleObjectiveScore{ get; set; }//每个模块客观成绩 冯老师的想法是：系统算出的成绩加上课后习题的成绩
-         public string ModuleComment{ get; set; }//每个模块教师给的评语
+         public string ModuleComment{ get; set; }//每个模块教师给的评语--评价时候使用
     }
 }
