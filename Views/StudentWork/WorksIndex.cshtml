@@ -1,3 +1,4 @@
+@using CourseCenter.Models
 @{
     ViewBag.Title = "WorksIndex";
     Layout = "~/Views/Shared/student_Layout.cshtml";
@@ -51,18 +52,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+
+                                            @foreach(Course course in ViewBag.listCourse as List<Course> )
+                                            {
                                              <tr class="odd gradeX">
-                                           <td>数学</td>
-                                            <td>01/01/2015</td>
-                                            <td>01/01/2015</td>
-                                                   <td>正在上课</td>
-                                             <td style="text-align: center" ><a class="btn btn-success" href="/StudentWork/WorksDetail?id=课程id"><i class="icon-gift icon-white"></i> Enter</a></td>
+                                           <td>@course.CourseName</td>
+                                            <td>@course.BeginTime</td>
+                                            <td>@course.EndTime</td>
+                                                   <td>@course.CourseStatus</td>
+                                             <td style="text-align: center" ><a class="btn btn-success" href="/StudentWork/WorksDetail?courseid=@course.Id"><i class="icon-gift icon-white"></i> Enter</a></td>
                                             </tr>
-                                    
-                                             
-                                            
-                                        
-                                         
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
