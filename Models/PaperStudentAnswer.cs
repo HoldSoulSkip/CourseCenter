@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +13,7 @@ namespace CourseCenter.Models
         public int MouduleId { get; set; }
         public int QuestionId { get; set; }
         public string Answer { get; set; }
+        public double AnswerScore { get; set; }
+        public int MouduleTag { get; set; }
     }
 }
