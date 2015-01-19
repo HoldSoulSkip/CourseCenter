@@ -1,4 +1,4 @@
-﻿using CourseCenter.Common;
+using CourseCenter.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace CourseCenter.Controllers
 {
     public class StudentCourseController : Controller
     {
-       //2015-12-12
+
         DBEntities db = new DBEntities();
         //获取用户(学生)cookie，cookie存储是ID
         string studentId = TakeCookie.GetCookie("userId");
@@ -410,6 +410,64 @@ namespace CourseCenter.Controllers
             {
                 CourseId = Convert.ToInt32(CId);
             }
+
+            //完成课后习题答案的提交和成绩
+
+            //先查询出当前模块的所有题目ID
+            List<PaperQuestion> pQuestionList = db.PaperQuestion.Where(c => c.CourseId == CourseId && c.ModuleTag == moduleTag).ToList();
+            //再根据所有questionId查找所有提交过来的form，如果是单选就直接查值，如果是多选就split那个form值
+            PaperStudentAnswer pAnswer = null;
+            
+            foreach (PaperQuestion p in pQuestionList)
+            {
+                pAnswer = new PaperStudentAnswer()
+                {
+                    StudentId = new Guid(studentId),
+                    CourseId = CourseId,
+                    MouduleTag = moduleTag,
+                };
+                string Answer;//传来的form值
+                if (p.QuestionType == 0)//单选
+                {
+                    Answer = Request.Form[p.Id + "&Answer"].ToString();
+                    if (p.Answer == Answer)
+                    {
+                        pAnswer.AnswerScore = 4;
+                    }
+                    else
+                        pAnswer.AnswerScore = 0;
+                }
+                else if (p.QuestionType == 1)//多选
+                {
+                    Answer = Request.Form[p.Id + "&Answer"].ToString();
+                    //--todo split需要完成
+                    if (p.Answer == Answer)
+                    {
+                        pAnswer.AnswerScore = 4;
+                    }
+                    else
+                        pAnswer.AnswerScore = 0;
+                }
+                else //填空
+                {
+                    Answer = Request.Form[p.Id+"&Answer"].ToString();
+                    if (p.Answer == Answer)
+                    {
+                        pAnswer.AnswerScore = 4;
+                    }
+                    else
+                        pAnswer.AnswerScore = 0;
+                }
+                pAnswer.MouduleId = p.MouduleId;
+                pAnswer.QuestionId = p.Id;
+                pAnswer.Answer = Answer;
+                db.PaperStudentAnswer.Add(pAnswer);
+            }
+
+
+            
+            //List<PaperStudentAnswer> pAnswerList = db.PaperStudentAnswer.Where(c=>c.StudentId==new Guid(studentId)&&c.CourseId==CourseId&&c.==).ToList();
+
             StudentWork work = null;
             StudentInfo sInfo = db.StudentInfo.Where(s => s.Id == new Guid(studentId)).FirstOrDefault();
             work = new StudentWork()
