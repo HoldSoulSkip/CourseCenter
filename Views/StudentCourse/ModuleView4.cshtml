@@ -266,7 +266,7 @@
                 </div>
                 <div class="block-content collapse in">
                     <div class="span12">
-                        <form class="form-horizontal" action="/StudentCourse/FinishModule?moduleTag=4" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="/StudentCourse/FinishModule?moduleTag=4" method="post" id="AddModule" enctype="multipart/form-data">
                             <fieldset>
                                 <legend>学习课程---<i style="color: #08c; font-size: 14px;">只能提交一次</i></legend>
                                 <input type="hidden" name="CourseId" id="CourseId" value="@ViewBag.CId" />
@@ -335,13 +335,15 @@
                                             <label style="font-size: larger;">
                                                 @PaperQuestion.QTitle
                                             </label>
-                                            <span>A.<input name="@PaperQuestion.Id&r" type="radio" /></span>@PaperQuestion.A
+                                            <input type="hidden" id="hidden" name="hidden1" value="@PaperQuestion.Id" />
+                                            @*<input type="hidden" id="@PaperQuestion.Id&hidden" name="@PaperQuestion.Id&hidden" />*@
+                                            <span>A.<input name="@PaperQuestion.Id&Answer" type="radio" value="A" checked="" /></span>@PaperQuestion.A
                                             <br />
-                                            <span>B.<input name="@PaperQuestion.Id&r" type="radio" /></span>@PaperQuestion.B
+                                            <span>B.<input name="@PaperQuestion.Id&Answer" type="radio" value="B" checked="" /></span>@PaperQuestion.B
                                             <br />
-                                            <span>C.<input name="@PaperQuestion.Id&r" type="radio" /></span>@PaperQuestion.C
+                                            <span>C.<input name="@PaperQuestion.Id&Answer" type="radio" value="C" checked="" /></span>@PaperQuestion.C
                                             <br />
-                                            <span>D.<input name="@PaperQuestion.Id&r" type="radio" /></span>@PaperQuestion.D
+                                            <span>D.<input name="@PaperQuestion.Id&Answer" type="radio" value="D" checked="" /></span>@PaperQuestion.D
                                         </div>
                                     </div>
                                         }
@@ -353,14 +355,14 @@
                                             <label style="font-size: larger;">
                                                 @PaperQuestion.QTitle
                                             </label>
-                                            <input type="hidden" id="@PaperQuestion.Id&Answer" />
-                                            <span>A.<input name="@PaperQuestion.Id&r" answer="A" type="checkbox" class="checkbox" /></span>@PaperQuestion.A
+                                            <input type="hidden" id="@PaperQuestion.Id&Answer" name="@PaperQuestion.Id&Answer" value="" />
+                                            <span>A.<input name="@PaperQuestion.Id&A" answer="A" type="checkbox" class="checkbox" /></span>@PaperQuestion.A
                                             <br />
-                                            <span>B.<input name="@PaperQuestion.Id&r" answer="B" type="checkbox" class="checkbox" /></span>@PaperQuestion.B
+                                            <span>B.<input name="@PaperQuestion.Id&B" answer="B" type="checkbox" class="checkbox" /></span>@PaperQuestion.B
                                             <br />
-                                            <span>C.<input name="@PaperQuestion.Id&r" answer="C" type="checkbox" class="checkbox" /></span>@PaperQuestion.C
+                                            <span>C.<input name="@PaperQuestion.Id&C" answer="C" type="checkbox" class="checkbox" /></span>@PaperQuestion.C
                                             <br />
-                                            <span>D.<input name="@PaperQuestion.Id&r" answer="D" type="checkbox" class="checkbox" /></span>@PaperQuestion.D
+                                            <span>D.<input name="@PaperQuestion.Id&D" answer="D" type="checkbox" class="checkbox" /></span>@PaperQuestion.D
                                         </div>
                                     </div>
                                         }
@@ -376,7 +378,7 @@
                                             <label style="font-size: larger;">
                                                 @blankQuestions.QTitle
                                             </label>
-                                            <textarea name="@blankQuestions.Id"  class="span6"  placeholder="填入答案 ..."></textarea>
+                                            <textarea name="@blankQuestions.Id&Answer"  class="span6"  placeholder="填入答案 ..."></textarea>
                                         </div>
                                     </div>
                                     }
@@ -387,7 +389,7 @@
                                                   
                                     <text>
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-primary">保存模块</button>
+                                        <span type="submit" onclick="saveModule()" class="btn btn-primary">保存模块</span>
                                         <button type="reset" class="btn">取消</button>
 
 
@@ -442,23 +444,6 @@
         jQuery(document).ready(function () {
             FormValidation.init();
         });
-        //function open() {
-        //    //保存画板
-        //    new Drawing('canvas');
-        //    document.querySelector('#save').addEventListener('click', function () {
-        //        var image = document.querySelector('#canvas').toDataURL();
-        //        localStorage.setItem('canvas', image);
-        //        console.log(localStorage.getItem('canvas'));
-        //    }, false);
-        //    if (localStorage.getItem('canvas')) {
-        //        document.querySelector('#DrawBoardImg').value = localStorage.getItem('canvas');
-
-        //    }
-        //    $("#canvas").css("display", "block");
-        //}
-
-
-
         $(function () {
             $(".datepicker").datepicker();
             $(".uniform_on").uniform();
@@ -525,20 +510,60 @@
                 ctx.clearRect(0, 30, 600, 570);
             });
         });
-        //复选框的操作
-        $(function () {
-            var Answer;
-            $(".checkbox").click(function () {
-                //$(".Answer").find("input[type=checkbox]").each(function () {
-                if ($(this).attr("selected") = selected) {
-                    var $this = $(this)
-                    Answer = $(this).parent().siblings("input[type=hidden]");
-                    Answer.val() = Answer.val() + $this.attr("answer");
-                }
-                //});
-            });
 
+
+
+        $(function () {
+            //复选框的操作  标识某些复选框被选中
+            $(".checkbox").click(function () {
+                var $this = $(this);
+                //点击复选框提示选中
+                if ($this.attr("checked") == "checked") {
+                    $this.removeAttr("checked");
+                }
+                else {
+                    $this.attr("checked", "checked");
+                }
+            });
+            //$("input[type='radio']").click(function () {
+
+            //});
         });
+
+
+
+
+        //为了保证选中的复选框在最后能被填入隐藏域,不用按钮直接提交
+
+        function saveModule() {
+            var Answer;
+            $(".checkbox").each(function () {
+                //将选中的复选框值填入隐藏域
+                var $this = $(this);
+                if ($this.attr("checked") == "checked") {
+                    var answer = $this.attr("answer");
+                    Answer = $(this).parent().siblings("input[type='hidden']");
+                    if (Answer.val())
+                        Answer.val(Answer.val() + ";" + answer);
+                    else
+                        Answer.val(answer);
+                }
+            });
+            //$("input[type='radio']").each(function () {
+            //    //将选中的单选填入隐藏域
+            //    var $this = $(this);
+            //    if ($this.attr("checked")==true) {
+            //        var answer = $this.attr("answer");
+            //        Answer = $(this).parent().siblings("input[type='hidden']");
+            //        if (Answer.val())
+            //            Answer.val(Answer.val() + ";" + answer);
+            //        else
+            //            Answer.val(answer);
+            //    }
+            //});
+            $("#AddModule").submit();
+        };
+
     </script>
 
 
