@@ -5,7 +5,6 @@
 
 
 @section head{
-  
         <!-- Bootstrap -->
         <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -21,6 +20,7 @@
         <script src="~/Content/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
       }
 @section span9{
+
     <div class="span9" id="content">
                   <div class="row-fluid">
                      <!-- block -->
@@ -34,19 +34,19 @@
                                    <div class="btn-group pull-right">
                   <button data-toggle="dropdown" class="btn dropdown-toggle">其他模块 <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                      <li><a href="/StudentScore/你的方法？模块的标记">模块一  </a>
+                      <li><a href="/StudentScore/WorksDetail?courseid=@ViewBag.courseid&moduleTag=1">模块一  </a>
 
                       </li>
-                        <li><a href="/StudentScore/你的方法？模块的标记">模块二  </a>
+                        <li><a href="/StudentScore/WorksDetail?courseid=@ViewBag.courseid&moduleTag=2">模块二  </a>
 
                       </li>
-                        <li><a href="/StudentScore/你的方法？模块的标记">模块三  </a>
+                        <li><a href="/StudentScore/WorksDetail?courseid=@ViewBag.courseid&moduleTag=3">模块三  </a>
                                 
                       </li>
-                        <li><a href="/StudentScore/你的方法？模块的标记">模块四  </a>
+                        <li><a href="/StudentScore/WorksDetail?courseid=@ViewBag.courseid&moduleTag=4">模块四  </a>
 
                       </li>
-                        <li><a href="/StudentScore/你的方法？模块的标记">模块五  </a>
+                        <li><a href="/StudentScore/WorksDetail?courseid=@ViewBag.courseid&moduleTag=5">模块五  </a>
 
                       </li>
                          
@@ -64,42 +64,25 @@
                                             <tr>
                                               
                                                 <th style="text-align:center">模块成绩</th>
-                                                <th style="text-align:center">78</th>
-                                                
+                                                @{
+                                                    if (@ViewBag.cScore!=null)
+                                                    {
+                                                <th style="text-align:center">@ViewBag.cScore.ModuleScore</th>
+                                                }
+                                                }
                                             </tr>
-                                        
-                                        
-</table> <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                                         </table> 
+
+                                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
                             <fieldset>
                                     <div class="control-group">
                                     <label class="control-label" for="typeahead">模块名称 </label>
                                     <div class="controls">
-                                        @{
-                                            if (@ViewBag.course != null)
-                                            { 
-                                            <text>
-
+                                  
                                         <div class="alert alert-info" style="width:520px; text-align:center">
-                                              @ViewBag.course.CourseName
+                                              @ViewBag.module.ModuleTitle
                                              
                                             </div>
-
-                                       </text>
-                                            }
-                                            else
-                                            {
-                                            <text>
-                                            <div class="alert alert-info" style="width:520px; text-align:center">
-                                               模块名称
-                                             
-                                            </div>
-
-
-
-
-                                            </text>
-                                            }
-                                        }
 
 
                                     </div>
@@ -108,13 +91,10 @@
                                     <label class="control-label" for="typeahead">上传作业 </label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.course != null)
+                                            if (@ViewBag.sWork != null)
                                             { 
                                             <text>
-
-                                        <div class="alert alert-info" style="width:520px; text-align:center">
-                                              @ViewBag.course.CourseName
-                                             
+                                            <a class="btn btn-info "  href="@ViewBag.sWork.WorkFilePath" target="_blank">完成下载</a>
                                             </div>
 
                                        </text>
@@ -123,10 +103,6 @@
                                             {
                                             <text>
  <a class="btn btn-info "  href="" target="_blank">完成下载</a>
-
-
-
-
                                             </text>
                                             }
                                         }
@@ -138,122 +114,60 @@
                                     <label class="control-label" for="textarea2">我的作业</label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
+                                            if (@ViewBag.sWork != null)
                                             {
                                                 <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
-                                           @Html.Raw(ViewBag.Pagemodule.ModuleContent)
+                                           @Html.Raw(ViewBag.sWork.WorkContent)
                                         </div>
                                             }
                                             else
                                             {
                                         <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
-                                            <p>我们先听英国诗人蒲柏的一段诗:“自然和自然规律，隐藏在黑暗中.上帝说:让牛顿出生吧！于是，一切显现光明.”确实，有力就会运动，没有力就不会运动.这个错误的观点千百年来一直躲藏在黑暗中，一直到牛顿的出现，才使我们真正了解到:力不是维持物体运动状态的原因.而是改变物体运动状态的原因.也就是说力是产生加速度的原因.我们自然会问:力、质量、加速度到底存在什么样的定量关系？先请大家根据生活经验和你所掌握的知识，猜想力、质量、加速度到底存在什么样的定量关系.    </p>
+                                            <p>你还没有提交任务 </p>
                                         </div>
                                             }
                                         }
 
                                     </div>
                                 </div>
-
-
-                                <div class="control-group">
-                                    <label class="control-label" for="typeahead">题目一 </label>
+                                @{int count = 0;}
+                                @foreach (var item in ViewBag.listErecord as List<CourseCenter.Controllers.Erecord >)
+                                {
+                                    
+                                    count++;
+                                   <div class="control-group">
+                                    <label class="control-label" for="typeahead">题目 @count </label>
                                     <div class="controls">
-                                        @{
-                                            if (@ViewBag.course != null)
-                                            { 
-                                            <text>
-
-                                        <div class="alert alert-info" style="width:520px; text-align:center">
-                                              @ViewBag.course.CourseName
-                                             
-                                            </div>
-
-                                       </text>
-                                            }
-                                            else
-                                            {
+                                     
                                             <text>
                                             <div class="alert alert-info" style="width:520px; text-align:center">
-                                               题目一
+                                             @item.QTitle
                                              
                                             </div>
-                                                                                    <div class="alert alert-success" style="width:520px; text-align:center">
-                                               我的答案
+                                            <div class="alert alert-success" style="width:520px; text-align:center">
+                                                   @item.Answer
                                              
                                             </div>
-
-                                                                                    <div class="alert alert-danger" style="width:520px; text-align:center">
-                                               教师给分
+                                            <div class="alert alert-danger" style="width:520px; text-align:center">
+                                                  @item.AnswerScore
                                              
                                             </div>
-
-
-
-
-
                                             </text>
-                                            }
-                                        }
-
-
+                                   
                                     </div>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="typeahead">题目二</label>
-                                    <div class="controls">
-                                        @{
-                                            if (@ViewBag.course != null)
-                                            { 
-                                            <text>
+                                }
+                           
+                                
 
-                                        <div class="alert alert-info" style="width:520px; text-align:center">
-                                              @ViewBag.course.CourseName
-                                             
-                                            </div>
-
-                                       </text>
-                                            }
-                                            else
-                                            {
-                                            <text>
-                                            <div class="alert alert-info" style="width:520px; text-align:center">
-                                               题目二
-                                             
-                                            </div>
-                                        <div class="alert alert-success" style="width:520px; text-align:center">
-                                               我的答案
-                                             
-                                            </div>
-
-                                                                                    <div class="alert alert-danger" style="width:520px; text-align:center">
-                                               教师给分
-                                             
-                                            </div>
-
-
-
-                                            </text>
-                                            }
-                                        }
-
-
-                                    </div>
-                                </div>
                                 <div class="control-group">
                                     <label class="control-label" for="textarea2">教师总评</label>
                                     <div class="controls">
                                         @{
-                                            if (@ViewBag.Pagemodule != null)
-                                            {
-                                                <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
-                                           @Html.Raw(ViewBag.Pagemodule.ModuleContent)
-                                        </div>
-                                            }
-                                            else
+                                            if (@ViewBag.cScore != null)
                                             {
                                         <div class="well" style="background-color: rgba(173, 178, 241, 0.42)">
-                                            <p>我们先听英国诗人蒲柏的一段诗:“自然和自然规律，隐藏在黑暗中.上帝说:让牛顿出生吧！于是，一切显现光明.”确实，有力就会运动，没有力就不会运动.这个错误的观点千百年来一直躲藏在黑暗中，一直到牛顿的出现，才使我们真正了解到:力不是维持物体运动状态的原因.而是改变物体运动状态的原因.也就是说力是产生加速度的原因.我们自然会问:力、质量、加速度到底存在什么样的定量关系？先请大家根据生活经验和你所掌握的知识，猜想力、质量、加速度到底存在什么样的定量关系.    </p>
+                                            <p>@ViewBag.cScore.ModuleComment </p>
                                         </div>
                                             }
                                         }
@@ -269,7 +183,8 @@
                     </div>
                         <!-- /block -->
                   </div>
-        <div class="row-fluid">
+
+             <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
@@ -341,14 +256,13 @@
                                       </a>
                                   </div>    
                                 </div>
+
                             </div>
                         </div>
-                        <!-- /block -->
-                    </div>
-              </div>
+           
  }
         <!--/.fluid-container-->
-       @section booterScript{
+ @section booterScript{
              <script src="~/Content/vendors/jquery-1.9.1.min.js"></script>
         <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
         <script src="~/Content/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
