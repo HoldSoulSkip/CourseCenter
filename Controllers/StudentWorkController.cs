@@ -8,6 +8,15 @@ namespace CourseCenter.Controllers
 {
     public class StudentWorkController : Controller
     {
+    
+        DBEntities db = new DBEntities();
+        //获取用户(学生)cookie，cookie存储是ID
+        Guid studentId =new Guid( TakeCookie.GetCookie("userId"));
+        //数据库帮助类
+        ModelHelpers mHelp = new ModelHelpers();
+
+    
+    
       /// <summary>
         /// 获取学生所有的课程
         /// </summary>
