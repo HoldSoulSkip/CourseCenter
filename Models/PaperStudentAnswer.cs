@@ -11,7 +11,7 @@ namespace CourseCenter.Models
         public Guid StudentId { get; set; }
         public int CourseId { get; set; }
         public int MouduleId { get; set; }
-        public int QuestionId { get; set; }
+        public int PaperQuestionId { get; set; }
         public string Answer { get; set; }
         public double AnswerScore { get; set; }
         public int MouduleTag { get; set; }
