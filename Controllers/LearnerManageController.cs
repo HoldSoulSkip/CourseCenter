@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -60,10 +60,36 @@ namespace CourseCenter.Controllers
         /// 获得学生的上传作业的情况
         /// </summary>
         /// <returns></returns>
-        public ActionResult GetStudentWork()
+        public ActionResult GetStudentWork(string moduleTag)
         {
             Guid studentId = new Guid(Request.QueryString["SId"]);
             int courseId = Convert.ToInt32(Request.QueryString["CId"]);
+            //前台界面上需要显示如下:模块名称，作业下载，学生作业内容，题目及学生答案
+
+            ViewBag.courseid = courseId;
+            //返回学生的最后得分
+            int mTag = 1;//如果是第一次其他页面请求过来，mTag的值为1，则默认显示该课程的第一个模块
+            if (!string.IsNullOrEmpty(moduleTag))
+            {
+                mTag = Convert.ToInt32(moduleTag);
+            }
+            //返回模块详情
+            Module module = db.Module.Where(m => m.CourseId == courseId && m.ModuleTag == mTag).FirstOrDefault();
+            ViewBag.module = module;
+            //返回学生作业
+            StudentWork sWork = db.StudentWork.Where(sw => sw.CourseId == courseId && sw.StudentId == studentId && sw.ModuleTag == mTag).FirstOrDefault();
+            ViewBag.sWork = sWork;
+            //返回学生问题及答案和评分
+            if (module != null)
+            {
+
+                List<Erecord> listErecord = mHelp.SqlQuery<Erecord>("select pq.QTitle,psa.Answer,psa.AnswerScore from PaperStudentAnswers as psa join PaperQuestions as pq on psa.QuestionId=pq.Id where psa.MouduleTag=@mTag and StudentId=@studentId", new SqlParameter[] { new SqlParameter("@mTag", mTag), new SqlParameter("@studentId", studentId) }).ToList();
+                ViewBag.listErecord = listErecord;
+            }
+            //todo---查询评价量表的题目
+            List<EvaluateTable> EvTableList = db.EvaluateTable.Where(c=>c.TableId==1).ToList();
+            ViewBag.EvTableList = EvTableList;
+
             List<StudentWork> listStudentWork = db.StudentWork.Where(sw => sw.CourseId == courseId && sw.StudentId == studentId).ToList();
             ViewBag.listStudentWork = listStudentWork;
 
